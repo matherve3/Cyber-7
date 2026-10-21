@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cyber CI · Niveau 7 · Architecte de Civilisation · 100 Défis</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#0a0e1a;color:#e2e8f0;line-height:1.65}
+header{background:#111827;padding:14px 20px;display:flex;justify-content:space-between;border-bottom:2px solid #8b5cf6;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:50}
+header h1{color:#8b5cf6;font-size:1rem;cursor:pointer}
+.stats{color:#94a3b8;font-size:0.85rem}
+.stats b{color:#8b5cf6}
+main{max-width:980px;margin:0 auto;padding:16px}
+.card{background:#111827;border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid #263243}
+h2{color:#8b5cf6;margin-bottom:10px;font-size:1.3rem}
+h3{color:#22c55e;margin:14px 0 8px;font-size:1rem}
+h4{color:#c4b5fd;margin:10px 0 6px;font-size:0.95rem}
+p{margin:8px 0}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin-bottom:6px}
+code{background:#1f2937;padding:2px 6px;border-radius:4px;color:#8b5cf6;font-size:0.9em}
+pre{background:#050914;padding:12px;border-radius:8px;overflow-x:auto;margin:10px 0;border-left:3px solid #8b5cf6;font-size:0.85em;line-height:1.5}
+pre code{background:none;padding:0;color:#e2e8f0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9em}
+th,td{border:1px solid #1f2937;padding:8px;text-align:left;vertical-align:top}
+th{background:#1f2937;color:#8b5cf6}
+a{color:#8b5cf6}
+.meta{display:flex;gap:12px;font-size:0.8rem;color:#94a3b8;margin-bottom:8px;flex-wrap:wrap}
+.intro{background:#4c1d95;padding:14px;border-radius:10px;margin:12px 0;border-left:4px solid #8b5cf6}
+.intro h3{color:#c4b5fd;margin-top:0}
+.analogy{background:#0e7490;padding:12px;border-radius:10px;margin:12px 0;border-left:4px solid #22d3ee;font-style:italic}
+.section{background:#0f172a;padding:16px;border-radius:10px;margin:14px 0;border-left:4px solid #c4b5fd}
+.section h3{color:#c4b5fd;margin-top:0;font-size:1.05rem}
+.why{background:#4c1d95;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #a78bfa}
+.bank{background:#14532d;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #4ade80}
+.glo{background:#1e293b;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #94a3b8}
+.glo b{color:#8b5cf6}
+.pr{background:#052e16;padding:14px;border-radius:10px;margin:14px 0;border-left:4px solid #22c55e}
+.pr h3{color:#86efac;margin-top:0}
+.er{background:#7f1d1d;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #ef4444}
+.df{background:#78350f;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #fbbf24}
+.car{background:#1e1b4b;padding:14px;border-radius:10px;margin:12px 0;border-left:4px solid #a78bfa}
+.quiz{background:#1f2937;padding:14px;border-radius:10px;margin-top:14px}
+.q{margin-bottom:14px}
+.q label{display:block;padding:9px 12px;margin:5px 0;background:#111827;border-radius:7px;cursor:pointer}
+.q label:hover{background:#334155}
+.q input{margin-right:10px}
+.ok{background:#14532d!important;border-left:4px solid #22c55e!important}
+.ko{background:#7f1d1d!important;border-left:4px solid #ef4444!important}
+.exp{background:#050914;padding:10px;border-radius:6px;margin-top:8px;font-size:0.85em;color:#cbd5e1;border-left:3px solid #8b5cf6;display:none}
+.nav{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+button{background:#8b5cf6;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem}
+button:hover{background:#a78bfa}
+button.sec{background:#1f2937;color:#e2e8f0}
+button.gold{background:#fbbf24;color:#0a0e1a}
+button.exam{background:#8b5cf6;color:#fff}
+.res{margin-top:12px;padding:12px;border-radius:8px;font-weight:700;text-align:center}
+.res.g{background:#14532d;color:#86efac}
+.res.r{background:#7f1d1d;color:#fca5a5}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-top:10px}
+.btn{background:#1f2937;padding:10px;border-radius:8px;cursor:pointer;border:2px solid transparent}
+.btn:hover{border-color:#8b5cf6}
+.btn.done{border-color:#22c55e;background:#14532d}
+.btn .n{font-weight:800;color:#8b5cf6;display:block;font-size:0.75rem}
+.btn.done .n{color:#22c55e}
+.btn .ti{display:block;font-size:0.78rem;color:#94a3b8;margin-top:2px}
+.stat{background:#1e293b;padding:16px;border-radius:12px;border-left:4px solid #8b5cf6;text-align:center}
+.stat .big{font-size:2em;font-weight:800;color:#8b5cf6;display:block}
+.stat .lbl{font-size:0.85em;color:#94a3b8}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.cert{background:#4c1d95;padding:14px;border-radius:10px;margin:10px 0;border-left:4px solid #8b5cf6}
+.cert h4{color:#c4b5fd;margin:0 0 6px}
+.cert.done{background:#14532d;border-left-color:#22c55e}
+.cert.done h4{color:#86efac}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:700;margin-left:6px}
+.badge.free{background:#14532d;color:#86efac}
+.badge.partial{background:#78350f;color:#fde68a}
+.badge.paid{background:#7f1d1d;color:#fca5a5}
+.job{background:#1f2937;padding:12px;border-radius:10px;border-left:4px solid #22c55e;margin-bottom:10px}
+.job h4{margin:0 0 4px;color:#86efac}
+.exam-card{background:linear-gradient(135deg,#4c1d95 0%,#1e1b4b 100%);padding:16px;border-radius:12px;margin:12px 0;border-left:4px solid #8b5cf6}
+.exam-card h4{color:#c4b5fd;margin:0 0 8px;font-size:1.05rem}
+.exam-card.locked{opacity:0.6;border-left-color:#475569;background:#1e293b}
+.exam-card.passed{background:linear-gradient(135deg,#14532d 0%,#052e16 100%);border-left-color:#22c55e}
+.exam-card.passed h4{color:#86efac}
+.exam-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.72em;font-weight:800;margin-bottom:6px}
+.exam-badge.locked{background:#334155;color:#94a3b8}
+.exam-badge.ready{background:#7c3aed;color:#fff}
+.exam-badge.passed{background:#22c55e;color:#052e16}
+.qcount{color:#cbd5e1;font-size:0.85em;margin:6px 0}
+.level-tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.72em;font-weight:800;margin-left:8px}
+.level-tag.l7{background:#4c1d95;color:#c4b5fd}
+.hero{background:linear-gradient(135deg,#4c1d95 0%,#1e1b4b 100%);border-left:4px solid #8b5cf6;padding:24px;border-radius:12px;margin-bottom:16px}
+.hero h2{color:#c4b5fd;font-size:1.5rem;margin-bottom:8px}
+.hero p{color:#e9d5ff;font-size:0.95em}
+footer{text-align:center;padding:20px;color:#94a3b8;font-size:0.78em}
+</style>
+</head>
+<body>
+<header>
+  <h1 onclick="render()">Cyber CI · Niveau 7</h1>
+  <div class="stats" id="hs"></div>
+</header>
+<main id="app"></main>
+<footer>Etudiant L2 UVCI - Objectif Banque CI - Niveau 7 Architecte de Civilisation</footer>
+
+<script>
+// ============================================================
+// NIVEAU 7 : 100 DEFIS (601-700) - ARCHITECTE DE CIVILISATION
+// Modules :
+// - Module 31 : Standards planétaires (601-620)
+// - Module 32 : Géopolitique cyber avancée (621-640)
+// - Module 33 : Civilisation numérique & éthique (641-660)
+// - Module 34 : IA superintelligente & sécurité (661-680)
+// - Module 35 : Postérité civilisationnelle (681-700)
+// ============================================================
+var D = [
+/* ---------- MODULE 31 : STANDARDS PLANETAIRES (601-620) ---------- */
+{id:601,t:"Créer un standard mondial",d:55,
+intro:"Créer un standard mondial cyber (comme ISO 27001, NIST CSF, PCI-DSS) est l'acte ultime d'influence. Un standard mondial est adopté par des millions d'organisations, structure l'industrie, et protège des milliards de personnes. C'est un héritage civilisationnel.",
+analogy:"Un standard mondial, c'est comme l'invention de l'écriture : une fois adoptée, elle structure toute la civilisation pour des millénaires.",
+sections:[
+{titre:"Pourquoi créer un standard ?",contenu:"<ul><li><b>Impact</b> : des millions d'organisations.</li><li><b>Uniformisation</b> : pratiques communes.</li><li><b>Confiance</b> : interopérabilité.</li><li><b>Héritage</b> : durable.</li><li><b>Influence</b> : orienter l'industrie.</li><li><b>Business</b> : écosystème.</li></ul>"},
+{titre:"Standards mondiaux cyber",contenu:"<table><tr><th>Standard</th><th>Organisme</th><th>Adoption</th></tr><tr><td><b>ISO 27001</b></td><td>ISO</td><td>100k+ entreprises</td></tr><tr><td><b>NIST CSF</b></td><td>NIST</td><td>USA + international</td></tr><tr><td><b>PCI-DSS</b></td><td>PCI SSC</td><td>Toutes cartes</td></tr><tr><td><b>MITRE ATT&CK</b></td><td>MITRE</td><td>Référence mondiale</td></tr><tr><td><b>OWASP Top 10</b></td><td>OWASP</td><td>Web mondiale</td></tr><tr><td><b>SOC 2</b></td><td>AICPA</td><td>SaaS mondiale</td></tr></table>"},
+{titre:"Étapes de création",contenu:"<ol><li><b>Vision</b> : besoin non couvert.</li><li><b>Recherche</b> : état de l'art.</li><li><b>Consortium</b> : experts, entreprises, gouvernements.</li><li><b>Rédaction</b> : 1-2 ans.</li><li><b>Consultation publique</b> : 6-12 mois.</li><li><b>Pilote</b> : adoption précoce.</li><li><b>Publication</b> : version 1.0.</li><li><b>Adoption</b> : industriels.</li><li><b>Certification</b> : auditeurs.</li><li><b>Évolution</b> : versions successives.</li></ol>"},
+{titre:"Gouvernance",contenu:"<ul><li><b>Comité directeur</b> : orientation.</li><li><b>Groupes de travail</b> : rédaction.</li><li><b>Consultation</b> : publique.</li><li><b>Adoption</b> : consensus.</li><li><b>Révision</b> : périodique.</li><li><b>Certification</b> : tierce.</li></ul>"},
+{titre:"Exemples réussis",contenu:"<ul><li><b>ISO 27001</b> : 100k+ certifiées.</li><li><b>NIST CSF</b> : référence mondiale.</li><li><b>PCI-DSS</b> : toute l'industrie paiement.</li><li><b>MITRE ATT&CK</b> : tous les SOC.</li><li><b>OWASP Top 10</b> : tous les pentests web.</li><li><b>SOC 2</b> : tous les SaaS.</li></ul>"}
+],
+why:"Un standard mondial = impact civilisationnel, héritage durable.",
+bank:"Une banque qui contribue à un standard influence l'industrie.",
+glo:"<b>Standard</b> : norme mondiale.",
+pr:["Identifier besoin","Consortium","Rédaction","Consultation","Publication"],
+er:"Standard sans adoption = inutile.",
+df:"Concevoir un nouveau standard cyber (mission, gouvernance, adoption).",
+proj:"Publier le projet de standard sur GitHub.",
+q:[{q:"ISO 27001 :",a:["Standard SMSI","Rien","Rien","Rien"],c:0,e:"ISO 27001 = standard SMSI."},{q:"MITRE ATT&CK :",a:["Référence TTPs","Rien","Rien","Rien"],c:0,e:"MITRE ATT&CK = référence TTPs mondiale."}]},
+
+{id:602,t:"Gouvernance mondiale de l'Internet",d:55,
+intro:"La gouvernance mondiale de l'Internet est un enjeu stratégique : qui contrôle les racines DNS, les protocoles, les standards ? Les acteurs : ICANN, IETF, W3C, ONU, gouvernements, entreprises. Un déséquilibre = risque de fragmentation.",
+analogy:"L'Internet est un bien commun mondial. Sa gouvernance est l'enjeu du 21e siècle.",
+sections:[
+{titre:"Acteurs",contenu:"<ul><li><b>ICANN</b> : noms de domaine, racines DNS.</li><li><b>IETF</b> : protocoles (RFC).</li><li><b>W3C</b> : standards web.</li><li><b>ONU</b> : GGE, OEWG.</li><li><b>UIT</b> : télécoms.</li><li><b>Gouvernements</b> : régulation.</li><li><b>Entreprises</b> : influence.</li></ul>"},
+{titre:"Enjeux",contenu:"<ul><li><b>Souveraineté</b> : états vs multi-stakeholder.</li><li><b>Neutralité</b> : net neutrality.</li><li><b>Fragmentation</b> : splinternet.</li><li><b>Chiffrement</b> : backdoors.</li><li><b>Désinformation</b> : régulation.</li><li><b>Accès</b> : fracture numérique.</li></ul>"},
+{titre:"Modèles",contenu:"<ul><li><b>Multi-stakeholder</b> : entreprise, société civile.</li><li><b>Intergouvernemental</b> : états.</li><li><b>Hybride</b> : mixte.</li><li><b>Technique</b> : ingénieurs.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Fragmentation</b> : splinternet.</li><li><b>Conflits</b> : états.</li><li><b>Lenteur</b> : processus.</li><li><b>Inégalités</b> : pays.</li><li><b>Éthique</b> : valeurs.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Entreprises</b> : standards.</li><li><b>Société civile</b> : plaidoyer.</li><li><b>Ingénieurs</b> : protocoles.</li><li><b>Universités</b> : recherche.</li></ul>"}
+],
+why:"La gouvernance de l'Internet = enjeu civilisationnel.",
+bank:"Une banque doit suivre la gouvernance pour anticiper les risques.",
+glo:"<b>ICANN</b> : noms de domaine. <b>IETF</b> : protocoles.",
+pr:["Identifier acteurs","Comprendre enjeux","Participer","Influencer"],
+er:"Sans gouvernance = chaos.",
+df:"Concevoir un modèle de gouvernance mondiale de l'Internet.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"ICANN :",a:["Noms de domaine","Rien","Rien","Rien"],c:0,e:"ICANN = gestion noms de domaine."},{q:"Multi-stakeholder :",a:["Tous acteurs","Rien","Rien","Rien"],c:0,e:"Multi-stakeholder = tous les acteurs."}]},
+
+{id:603,t:"Convention internationale cyber",d:55,
+intro:"Une convention internationale cyber (comme la Convention de Budapest, ou un traité ONU) définit les règles entre états : cybercriminalité, cyber-guerre, droits, coopération. C'est un acte diplomatique majeur.",
+analogy:"Une constitution mondiale pour la cyber. Elle définit les règles du jeu entre nations.",
+sections:[
+{titre:"Conventions existantes",contenu:"<ul><li><b>Budapest</b> (2001) : cybercriminalité, 65+ pays.</li><li><b>Malabo</b> (2014) : UA cyber.</li><li><b>Paris Call</b> (2018) : principes.</li><li><b>UN GGE</b> : règles étatiques.</li><li><b>Christchurch Call</b> : contenus.</li><li><b>Cyber Tech Accord</b> : industrie.</li></ul>"},
+{titre:"Enjeux d'une nouvelle convention",contenu:"<ul><li><b>Cyber-guerre</b> : règles.</li><li><b>Attribution</b> : états.</li><li><b>Sanctions</b> : cyber.</li><li><b>Civils</b> : protection.</li><li><b>Droits</b> : humains.</li><li><b>Coopération</b> : judiciaire.</li><li><b>IA</b> : régulation.</li></ul>"},
+{titre:"Processus",contenu:"<ol><li><b>Initiative</b> : état, ONU.</li><li><b>Négociation</b> : 2-5 ans.</li><li><b>Signature</b> : états.</li><li><b>Ratification</b> : parlements.</li><li><b>Entrée en vigueur</b>.</li><li><b>Application</b> : états.</li></ol>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Valeurs</b> : divergences.</li><li><b>Application</b> : faible.</li><li><b>Escalade</b> : risque.</li><li><b>Inégalités</b> : pays.</li></ul>"},
+{titre:"Opportunités",contenu:"<ul><li><b>Paix</b> : cyber.</li><li><b>Protection</b> : civils.</li><li><b>Coopération</b> : internationale.</li><li><b>Attribution</b> : cadrée.</li><li><b>Sanctions</b> : coordonnées.</li></ul>"}
+],
+why:"Une convention = cadre juridique international pour la cyber.",
+bank:"Une banque doit suivre les conventions internationales.",
+glo:"<b>Budapest</b> : convention cybercrime.",
+pr:["Identifier enjeux","Négocier","Signer","Ratifier"],
+er:"Convention sans application = symbole.",
+df:"Concevoir une nouvelle convention internationale cyber.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Budapest :",a:["Cybercrime","Rien","Rien","Rien"],c:0,e:"Convention de Budapest = cybercrime."},{q:"Malabo :",a:["UA cyber","Rien","Rien","Rien"],c:0,e:"Convention de Malabo = UA cyber."}]},
+
+{id:604,t:"Certification mondiale cyber",d:50,
+intro:"Une certification mondiale cyber (comme CISSP, OSCP) est un standard de compétence reconnu dans le monde entier. Elle garantit un niveau minimal de compétence et facilite la mobilité internationale.",
+analogy:"Un passeport pour la carrière cyber. Il ouvre les portes partout dans le monde.",
+sections:[
+{titre:"Certifications mondiales",contenu:"<table><tr><th>Certif</th><th>Organisme</th><th>Niveau</th></tr><tr><td><b>CISSP</b></td><td>ISC2</td><td>Management</td></tr><tr><td><b>OSCP</b></td><td>OffSec</td><td>Pentest</td></tr><tr><td><b>CISM</b></td><td>ISACA</td><td>Management</td></tr><tr><td><b>GCIH</b></td><td>SANS</td><td>IR</td></tr><tr><td><b>Security+</b></td><td>CompTIA</td><td>Junior</td></tr><tr><td><b>CC</b></td><td>ISC2</td><td>Débutant</td></tr></table>"},
+{titre:"Créer une certification mondiale",contenu:"<ol><li><b>Besoin</b> : compétence non couverte.</li><li><b>Référentiel</b> : compétences.</li><li><b>Examen</b> : QCM + pratique.</li><li><b>Reconnaissance</b> : industrie.</li><li><b>Accréditation</b> : ANSI/ISO 17024.</li><li><b>Promotion</b> : international.</li></ol>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Standard</b> : compétences.</li><li><b>Mobilité</b> : internationale.</li><li><b>Revenus</b> : examens.</li><li><b>Influence</b> : industrie.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Reconnaissance</b> : industrie.</li><li><b>Qualité</b> : examen.</li><li><b>Mise à jour</b> : technologie.</li><li><b>Coût</b> : développement.</li><li><b>Concurrence</b> : autres certifs.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>CISSP</b> : 150k+ certifiés.</li><li><b>OSCP</b> : référence pentest.</li><li><b>Security+</b> : 500k+ certifiés.</li><li><b>AWS Security</b> : cloud.</li><li><b>CC</b> : 1M+ visé.</li></ul>"}
+],
+why:"Une certification mondiale = standard, mobilité, influence.",
+bank:"Une banque veut des experts certifiés mondialement.",
+glo:"<b>ANSI/ISO 17024</b> : accréditation certification.",
+pr:["Besoin","Référentiel","Examen","Reconnaissance","Accréditation"],
+er:"Certification sans reconnaissance = inutile.",
+df:"Concevoir une nouvelle certification mondiale cyber.",
+proj:"Publier le référentiel sur GitHub.",
+q:[{q:"CISSP :",a:["Certification mondiale","Rien","Rien","Rien"],c:0,e:"CISSP = certification mondiale."},{q:"OSCP :",a:["Certification pentest","Rien","Rien","Rien"],c:0,e:"OSCP = certification pentest."}]},
+
+{id:605,t:"Protocole Internet nouvelle génération",d:55,
+intro:"Les protocoles Internet (TCP/IP, HTTP, DNS) ont été conçus dans les années 70-80, sans sécurité native. Un nouveau protocole (ex: SCION, ou une refonte) pourrait apporter sécurité, résilience, et performance.",
+analogy:"Remplacer les routes romaines par des autoroutes modernes. Long, coûteux, mais transformateur.",
+sections:[
+{titre:"Limites actuelles",contenu:"<ul><li><b>TCP/IP</b> : pas de sécurité native.</li><li><b>DNS</b> : non chiffré, vulnérable.</li><li><b>BGP</b> : pas d'authentification.</li><li><b>HTTP</b> : HTTPS ajouté après.</li><li><b>Email</b> : SMTP non sécurisé.</li></ul>"},
+{titre:"Nouveaux protocoles",contenu:"<ul><li><b>SCION</b> : routage sécurisé, isolation.</li><li><b>QUIC</b> : transport rapide, chiffré.</li><li><b>DoH/DoT</b> : DNS chiffré.</li><li><b>RPKI</b> : BGP sécurisé.</li><li><b>DMARC</b> : email sécurisé.</li><li><b>DNS-over-HTTPS</b>.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Adoption</b> : coût, complexité.</li><li><b>Interopérabilité</b> : legacy.</li><li><b>Standardisation</b> : IETF.</li><li><b>Déploiement</b> : mondial.</li><li><b>Régulation</b> : états.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Sécurité</b> : native.</li><li><b>Résilience</b> : DDoS.</li><li><b>Performance</b> : optimisée.</li><li><b>Confiance</b> : utilisateurs.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>IETF</b> : standardisation.</li><li><b>Gouvernements</b> : déploiement.</li><li><b>Entreprises</b> : implémentation.</li><li><b>Universités</b> : recherche.</li><li><b>Société civile</b> : plaidoyer.</li></ul>"}
+],
+why:"Les protocoles actuels = base de l'Internet. Les améliorer = impact civilisationnel.",
+bank:"Une banque doit anticiper les nouveaux protocoles (QUIC, DoH).",
+glo:"<b>SCION</b> : protocole sécurisé. <b>QUIC</b> : transport rapide.",
+pr:["Étudier SCION","QUIC","DoH","RPKI","Contribuer IETF"],
+er:"Nouveau protocole sans adoption = échec.",
+df:"Concevoir un nouveau protocole Internet sécurisé.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"SCION :",a:["Protocole sécurisé","Rien","Rien","Rien"],c:0,e:"SCION = protocole routage sécurisé."},{q:"QUIC :",a:["Transport rapide","Rien","Rien","Rien"],c:0,e:"QUIC = transport rapide chiffré."}]},
+
+{id:606,t:"Framework planétaire de sécurité IA",d:55,
+intro:"Un framework planétaire de sécurité IA définirait les règles pour le développement et l'usage de l'IA, au niveau mondial. L'AI Act européen est un début, mais un cadre mondial serait nécessaire face aux risques existentiels.",
+analogy:"Une constitution mondiale pour l'IA. Elle protège l'humanité.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Risques existentiels</b> : IA autonome.</li><li><b>Biais</b> : discrimination.</li><li><b>Transparence</b> : explicabilité.</li><li><b>Responsabilité</b> : qui ?</li><li><b>Droits</b> : humains.</li><li><b>Sécurité</b> : alignement.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>EU AI Act</b> : régulation EU.</li><li><b>NIST AI RMF</b> : framework US.</li><li><b>OECD AI Principles</b>.</li><li><b>UNESCO AI Ethics</b>.</li><li><b>G7 Hiroshima</b> : IA.</li><li><b>UK AI Safety Institute</b>.</li></ul>"},
+{titre:"Framework mondial",contenu:"<ol><li><b>Principes</b> : éthique.</li><li><b>Classification</b> : risque.</li><li><b>Obligations</b> : hauts risques.</li><li><b>Audits</b> : indépendants.</li><li><b>Sanctions</b> : dissuasives.</li><li><b>Coopération</b> : internationale.</li><li><b>Évolution</b> : continue.</li></ol>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Rapidité</b> : IA évolue vite.</li><li><b>Application</b> : difficile.</li><li><b>Inégalités</b> : pays.</li><li><b>Acteurs</b> : GAFAM.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Protection</b> : humanité.</li><li><b>Confiance</b> : société.</li><li><b>Innovation</b> : cadrée.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"}
+],
+why:"L'IA = risque existentiel. Un framework mondial = nécessaire.",
+bank:"Une banque doit anticiper la régulation IA mondiale.",
+glo:"<b>AI Act</b> : régulation EU. <b>AI RMF</b> : framework US.",
+pr:["Étudier AI Act","NIST AI RMF","OECD","Contribuer"],
+er:"Framework sans application = symbole.",
+df:"Concevoir un framework planétaire de sécurité IA.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"AI Act :",a:["Régulation EU","Rien","Rien","Rien"],c:0,e:"AI Act = régulation IA EU."},{q:"NIST AI RMF :",a:["Framework US","Rien","Rien","Rien"],c:0,e:"NIST AI RMF = framework IA."}]},
+
+{id:607,t:"Convention crypto mondiale",d:50,
+intro:"La cryptographie est un enjeu de souveraineté : chiffrement fort, backdoors étatiques, export controls. Une convention mondiale définirait les règles : chiffrement autorisé, transparence, coopération.",
+analogy:"Une charte mondiale pour le chiffrement. Elle protège la vie privée ET la sécurité nationale.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Chiffrement fort</b> : droit.</li><li><b>Backdoors</b> : danger.</li><li><b>Export controls</b> : restrictions.</li><li><b>PQC</b> : migration.</li><li><b>Hébergement</b> : clés.</li><li><b>Vie privée</b> : protection.</li></ul>"},
+{titre:"Acteurs",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Entreprises</b> : crypto.</li><li><b>Société civile</b> : vie privée.</li><li><b>Universités</b> : recherche.</li><li><b>Standard</b> : NIST, ISO.</li></ul>"},
+{titre:"Modèles",contenu:"<ul><li><b>Fort</b> : chiffrement sans limite.</li><li><b>Backdoor</b> : accès étatique.</li><li><b>Key escrow</b> : dépôt clés.</li><li><b>Hybride</b> : mixte.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Vie privée</b> : société.</li><li><b>Sécurité</b> : nationale.</li><li><b>Technologie</b> : évolution.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Vie privée</b> : protégée.</li><li><b>Sécurité</b> : nationale.</li><li><b>Confiance</b> : société.</li><li><b>Innovation</b> : crypto.</li><li><b>Héritage</b> : durable.</li></ul>"}
+],
+why:"La crypto = enjeu de souveraineté et vie privée.",
+bank:"Une banque doit suivre les conventions crypto (PQC, export).",
+glo:"<b>PQC</b> : Post-Quantum. <b>Key escrow</b> : dépôt clés.",
+pr:["Étudier modèles","Négocier","Signer","Appliquer"],
+er:"Backdoors = affaiblissement global.",
+df:"Concevoir une convention crypto mondiale.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"PQC :",a:["Post-Quantum","Rien","Rien","Rien"],c:0,e:"PQC = Post-Quantum Cryptography."},{q:"Key escrow :",a:["Dépôt clés","Rien","Rien","Rien"],c:0,e:"Key escrow = dépôt de clés."}]},
+
+{id:608,t:"Espace cyber (satellites)",d:55,
+intro:"L'espace est devenu un domaine cyber critique : satellites, stations spatiales, communications. Une attaque cyber peut paralyser les communications, la navigation (GPS), et la défense. La sécurité spatiale est un enjeu civilisationnel.",
+analogy:"Les satellites sont les yeux et les oreilles de la civilisation. Les protéger est vital.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Satellites</b> : communications.</li><li><b>GPS</b> : navigation.</li><li><b>Stations</b> : ISS.</li><li><b>Lanceurs</b> : SpaceX, etc.</li><li><b>Défense</b> : militaire.</li><li><b>Observation</b> : Terre.</li></ul>"},
+{titre:"Attaques",contenu:"<ul><li><b>ViaSat</b> (2022) : hack satellites Ukraine.</li><li><b>GPS spoofing</b> : navigation.</li><li><b>Satellite hacking</b> : communications.</li><li><b>Supply chain</b> : composants.</li><li><b>Ground stations</b> : cibles.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Accès physique</b> : espace.</li><li><b>Legacy</b> : satellites anciens.</li><li><b>Coût</b> : mise à jour.</li><li><b>Régulation</b> : internationale.</li><li><b>Attribution</b> : états.</li></ul>"},
+{titre:"Solutions",contenu:"<ul><li><b>Chiffrement</b> : communications.</li><li><b>Authentification</b> : commandes.</li><li><b>Monitoring</b> : anomalies.</li><li><b>Redondance</b> : systèmes.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Agences</b> : NASA, ESA.</li><li><b>Entreprises</b> : SpaceX, OneWeb.</li><li><b>Défense</b> : Space Force.</li><li><b>Universités</b> : recherche.</li></ul>"}
+],
+why:"La sécurité spatiale = enjeu civilisationnel.",
+bank:"Les banques dépendent du GPS pour les transactions.",
+glo:"<b>ViaSat</b> : attaque satellites. <b>GPS spoofing</b> : leurre GPS.",
+pr:["Étudier ViaSat","GPS spoofing","Solutions","Coopération"],
+er:"Sans coopération = vulnérabilité globale.",
+df:"Concevoir une stratégie de sécurité spatiale.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"ViaSat :",a:["Hack satellites","Rien","Rien","Rien"],c:0,e:"ViaSat = hack satellites Ukraine 2022."},{q:"GPS spoofing :",a:["Leurre GPS","Rien","Rien","Rien"],c:0,e:"GPS spoofing = leurre GPS."}]},
+
+{id:609,t:"Standards ouverts vs propriétaires",d:50,
+intro:"Les standards ouverts (RFC, ISO) garantissent l'interopérabilité et la souveraineté. Les standards propriétaires (Microsoft, Apple) peuvent créer des dépendances. L'équilibre est crucial pour la cybersécurité mondiale.",
+analogy:"Les standards ouverts sont comme les routes publiques : tout le monde peut les utiliser. Les propriétaires sont des péages privés.",
+sections:[
+{titre:"Standards ouverts",contenu:"<ul><li><b>RFC</b> : IETF.</li><li><b>ISO</b> : international.</li><li><b>W3C</b> : web.</li><li><b>OpenSSL</b> : crypto.</li><li><b>Linux</b> : OS.</li><li><b>OWASP</b> : sécurité web.</li></ul>"},
+{titre:"Standards propriétaires",contenu:"<ul><li><b>Windows</b> : OS.</li><li><b>iOS</b> : mobile.</li><li><b>AWS</b> : cloud.</li><li><b>Salesforce</b> : SaaS.</li><li><b>Oracle</b> : DB.</li></ul>"},
+{titre:"Enjeux",contenu:"<ul><li><b>Interopérabilité</b> : ouverts.</li><li><b>Dépendance</b> : propriétaires.</li><li><b>Souveraineté</b> : ouverts.</li><li><b>Innovation</b> : propriétaires.</li><li><b>Coût</b> : variable.</li><li><b>Sécurité</b> : variable.</li></ul>"},
+{titre:"Équilibre",contenu:"<ul><li><b>Ouvrir</b> : API, standards.</li><li><b>Réguler</b> : abus position.</li><li><b>Promouvoir</b> : open source.</li><li><b>Coopérer</b> : international.</li><li><b>Innover</b> : propriétaire.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Interop</b> : ouverts.</li><li><b>Innovation</b> : propriétaires.</li><li><b>Souveraineté</b> : ouverts.</li><li><b>Confiance</b> : mixte.</li><li><b>Héritage</b> : durable.</li></ul>"}
+],
+why:"L'équilibre ouvert/propriétaire = enjeu de souveraineté.",
+bank:"Une banque doit éviter la dépendance à un fournisseur unique.",
+glo:"<b>Open source</b> : code ouvert. <b>RFC</b> : standards IETF.",
+pr:["Étudier standards","Identifier dépendances","Promouvoir ouverts","Réguler abus"],
+er:"Dépendance propriétaire = risque.",
+df:"Concevoir une stratégie open/propriétaire.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"RFC :",a:["Standards IETF","Rien","Rien","Rien"],c:0,e:"RFC = standards IETF."},{q:"Open source :",a:["Code ouvert","Rien","Rien","Rien"],c:0,e:"Open source = code ouvert."}]},
+
+{id:610,t:"Projet : standard mondial",d:300,
+intro:"Ce projet final du Module 31 consiste à concevoir un standard mondial cyber : mission, gouvernance, adoption, certification. C'est le livrable qui démontre votre capacité à influencer l'industrie mondiale.",
+analogy:"Écrire une constitution pour l'industrie cyber. Elle structure des millions d'organisations.",
+sections:[
+{titre:"Idées de standard",contenu:"<ul><li><b>IA sécurité</b> : standard.</li><li><b>Cloud souverain</b> : standard.</li><li><b>K8s sécurité</b> : standard.</li><li><b>IoT sécurité</b> : standard.</li><li><b>OT sécurité</b> : standard.</li><li><b>PQC</b> : standard.</li></ul>"},
+{titre:"Livrables",contenu:"<ol><li><b>Vision</b> : mondiale.</li><li><b>Mission</b> : claire.</li><li><b>Référentiel</b> : contrôles.</li><li><b>Gouvernance</b> : comité.</li><li><b>Certification</b> : auditeurs.</li><li><b>Adoption</b> : roadmap.</li><li><b>Impact</b> : mesurable.</li></ol>"},
+{titre:"Critères",contenu:"<ul><li><b>Vision</b> : mondiale.</li><li><b>Référentiel</b> : qualité.</li><li><b>Gouvernance</b> : solide.</li><li><b>Adoption</b> : réaliste.</li><li><b>Impact</b> : mesurable.</li></ul>"},
+{titre:"Pièges",contenu:"<ul><li><b>Vision locale</b>.</li><li><b>Référentiel faible</b>.</li><li><b>Gouvernance faible</b>.</li><li><b>Adoption irréaliste</b>.</li><li><b>Impact non mesuré</b>.</li></ul>"}
+],
+why:"Ce projet démontre votre capacité à créer un standard mondial.",
+bank:"Une banque peut contribuer à un standard mondial.",
+glo:"<b>Standard</b> : norme.",
+pr:["Vision","Référentiel","Gouvernance","Adoption"],
+er:"Standard sans adoption = inutile.",
+df:"Rapport complet + présentation.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Livrables :",a:["Multi","Rien","Rien","Rien"],c:0,e:"Le projet produit plusieurs livrables."},{q:"Adoption :",a:["Réaliste","Rien","Rien","Rien"],c:0,e:"Adoption réaliste."}]},
+
+/* ---------- MODULE 32 : GEOPOLITIQUE CYBER AVANCEE (621-640) ---------- */
+{id:621,t:"Cyber-guerre et droit international",d:55,
+intro:"La cyber-guerre est un domaine nouveau du droit international. Comment appliquer les règles de la guerre (proportionnalité, distinction civils/combattants) à la cyber ? Les états doivent définir des règles.",
+analogy:"Un nouveau champ de bataille sans règles claires. Le droit doit s'adapter.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Proportionnalité</b> : réponse.</li><li><b>Distinction</b> : civils/militaires.</li><li><b>Attribution</b> : état.</li><li><b>Légitime défense</b> : cyber.</li><li><b>Neutralité</b> : états.</li><li><b>Escalade</b> : risque.</li></ul>"},
+{titre:"Sources",contenu:"<ul><li><b>ONU</b> : GGE, OEWG.</li><li><b>Droit international</b> : humanitaire.</li><li><b>Tallinn Manual</b> : doctrine OTAN.</li><li><b>CCDCOE</b> : centre OTAN.</li><li><b>Doctrine</b> : états.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Attribution</b> : difficile.</li><li><b>Seuil</b> : guerre ?</li><li><b>Civils</b> : victimes.</li><li><b>Escalade</b> : risque.</li><li><b>Application</b> : faible.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : doctrine.</li><li><b>ONU</b> : règles.</li><li><b>OTAN</b> : défense.</li><li><b>Think tanks</b> : recherche.</li><li><b>ONG</b> : plaidoyer.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Paix</b> : cyber.</li><li><b>Protection</b> : civils.</li><li><b>Dissuasion</b> : états.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"}
+],
+why:"La cyber-guerre = enjeu civilisationnel.",
+bank:"Une banque doit anticiper les risques cyber-guerre.",
+glo:"<b>Tallinn Manual</b> : doctrine OTAN. <b>CCDCOE</b> : centre OTAN.",
+pr:["Étudier Tallinn","Droit international","ONU","Contribuer"],
+er:"Sans règles = escalade.",
+df:"Concevoir une doctrine de cyber-guerre.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Tallinn Manual :",a:["Doctrine OTAN","Rien","Rien","Rien"],c:0,e:"Tallinn Manual = doctrine OTAN."},{q:"CCDCOE :",a:["Centre OTAN","Rien","Rien","Rien"],c:0,e:"CCDCOE = centre cyber OTAN."}]},
+
+{id:622,t:"Attribution étatique",d:55,
+intro:"L'attribution est l'identification de l'état responsable d'une attaque cyber. Elle est cruciale pour la dissuasion, mais difficile : les états nient, utilisent des proxys, cachent leur infrastructure.",
+analogy:"Un puzzle : identifier le commanditaire derrière l'attaque.",
+sections:[
+{titre:"Méthodes",contenu:"<ul><li><b>Infrastructure</b> : IP, domaines.</li><li><b>Code</b> : similarités.</li><li><b>TTPs</b> : MITRE.</li><li><b>Victimes</b> : intérêts.</li><li><b>Renseignement</b> : humain, SIGINT.</li><li><b>Timing</b> : fuseaux.</li></ul>"},
+{titre:"Cas célèbres",contenu:"<ul><li><b>SolarWinds</b> : Russie (SVR).</li><li><b>NotPetya</b> : Russie (GRU).</li><li><b>WannaCry</b> : Corée du Nord (Lazarus).</li><li><b>Bangladesh Bank</b> : Corée du Nord.</li><li><b>DNC</b> : Russie (GRU).</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Preuves</b> : secrètes.</li><li><b>Faux drapeaux</b> : manipulation.</li><li><b>Proxys</b> : intermédiaires.</li><li><b>Politique</b> : décision.</li><li><b>Rétorsion</b> : risque.</li></ul>"},
+{titre:"Conséquences",contenu:"<ul><li><b>Sanctions</b> : économiques.</li><li><b>Attribution publique</b> : nommer.</li><li><b>Rétorsion</b> : cyber.</li><li><b>Dissuasion</b> : future.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>Renseignement</b> : états.</li><li><b>Diplomatie</b> : politique.</li><li><b>Think tanks</b> : recherche.</li><li><b>Entreprises</b> : données.</li><li><b>Universités</b> : recherche.</li></ul>"}
+],
+why:"L'attribution = dissuasion, justice internationale.",
+bank:"Une banque doit savoir qui l'attaque pour se défendre.",
+glo:"<b>Attribution</b> : identifier état. <b>GRU</b> : renseignement Russe.",
+pr:["Étudier cas","Méthodes","Pratiquer","Contribuer"],
+er:"Attribution hâtive = erreur.",
+df:"Analyser une attribution d'attaque cyber.",
+proj:"Publier l'analyse sur GitHub.",
+q:[{q:"SolarWinds :",a:["Russie","Rien","Rien","Rien"],c:0,e:"SolarWinds = Russie."},{q:"WannaCry :",a:["Corée du Nord","Rien","Rien","Rien"],c:0,e:"WannaCry = Corée du Nord."}]},
+
+{id:623,t:"Sanctions cyber",d:50,
+intro:"Les sanctions cyber sont des mesures économiques, diplomatiques, ou techniques contre les états ou acteurs responsables d'attaques. Elles sont un outil de dissuasion.",
+analogy:"Un embargo pour la cyber. Il punit, dissuade, protège.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>Économiques</b> : actifs, finance.</li><li><b>Voyage</b> : interdiction.</li><li><b>Technologiques</b> : export.</li><li><b>Diplomatiques</b> : relations.</li><li><b>Cyber</b> : offensive.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>USA</b> : sanctions Russie, Iran, Corée.</li><li><b>EU</b> : cyber diplomacy toolbox.</li><li><b>UK</b> : sanctions.</li><li><b>Attribution</b> : préalable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Attribution</b> : nécessaire.</li><li><b>Coût</b> : économique.</li><li><b>Efficacité</b> : variable.</li><li><b>Coopération</b> : internationale.</li><li><b>Évasion</b> : possible.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Dissuasion</b> : états.</li><li><b>Punition</b> : responsables.</li><li><b>Protection</b> : victimes.</li><li><b>Coopération</b> : internationale.</li><li><b>Normes</b> : comportement.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : décision.</li><li><b>UE</b> : politique.</li><li><b>ONU</b> : coordination.</li><li><b>Entreprises</b> : compliance.</li><li><b>ONG</b> : plaidoyer.</li></ul>"}
+],
+why:"Les sanctions = dissuasion internationale.",
+bank:"Une banque doit respecter les sanctions cyber.",
+glo:"<b>Sanctions</b> : mesures punitives.",
+pr:["Étudier sanctions","Compliance","Plaidoyer"],
+er:"Sanctions sans attribution = illégitimes.",
+df:"Concevoir une politique de sanctions cyber.",
+proj:"Publier la politique sur GitHub.",
+q:[{q:"Sanctions :",a:["Mesures punitives","Rien","Rien","Rien"],c:0,e:"Sanctions = mesures punitives."},{q:"Cyber diplomacy toolbox :",a:["Outil EU","Rien","Rien","Rien"],c:0,e:"Cyber diplomacy toolbox = outil EU."}]},
+
+{id:624,t:"Défense collective cyber (OTAN)",d:55,
+intro:"L'OTAN a déclaré que la cyber-attaque peut déclencher l'Article 5 (défense collective). Cette décision majeure transforme la cyber en enjeu militaire. La défense collective cyber est une nouvelle frontière.",
+analogy:"Une alliance militaire pour la cyber. Une attaque contre un = attaque contre tous.",
+sections:[
+{titre:"Article 5",contenu:"<p>Article 5 du traité OTAN : une attaque contre un membre = attaque contre tous. Depuis 2016, une cyber-attaque peut déclencher l'Article 5.</p>"},
+{titre:"CCDCOE",contenu:"<p>Le CCDCOE (Cooperative Cyber Defence Centre of Excellence) à Tallinn : recherche, formation, doctrine.</p>"},
+{titre:"Exercices",contenu:"<ul><li><b>Locked Shields</b> : plus grand exercice cyber.</li><li><b>Crossed Swords</b> : exercice.</li><li><b>Cyber Coalition</b> : exercice OTAN.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Attribution</b> : nécessaire.</li><li><b>Seuil</b> : guerre ?</li><li><b>Coopération</b> : états.</li><li><b>Moyens</b> : militaires.</li><li><b>Escalade</b> : risque.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Dissuasion</b> : états.</li><li><b>Protection</b> : alliés.</li><li><b>Coopération</b> : internationale.</li><li><b>Normes</b> : comportement.</li><li><b>Héritage</b> : durable.</li></ul>"}
+],
+why:"La défense collective = enjeu civilisationnel.",
+bank:"Une banque doit suivre la défense collective cyber.",
+glo:"<b>Article 5</b> : défense collective. <b>CCDCOE</b> : centre OTAN.",
+pr:["Étudier Article 5","CCDCOE","Exercices","Coopération"],
+er:"Attribution sans preuve = risque.",
+df:"Concevoir une doctrine de défense collective cyber.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Article 5 :",a:["Défense collective","Rien","Rien","Rien"],c:0,e:"Article 5 = défense collective OTAN."},{q:"Locked Shields :",a:["Exercice cyber","Rien","Rien","Rien"],c:0,e:"Locked Shields = exercice OTAN."}]},
+
+{id:625,t:"Cyber-dissuasion",d:50,
+intro:"La dissuasion cyber consiste à convaincre un attaquant que le coût de l'attaque sera supérieur au bénéfice. Elle repose sur : attribution crédible, capacité de rétorsion, communication.",
+analogy:"Un château-fort + une armée : l'ennemi renonce à attaquer car le coût est trop élevé.",
+sections:[
+{titre:"Piliers",contenu:"<ul><li><b>Attribution</b> : crédible.</li><li><b>Rétorsion</b> : capacité.</li><li><b>Communication</b> : doctrine.</li><li><b>Défense</b> : robuste.</li><li><b>Normes</b> : internationales.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Attribution</b> : difficile.</li><li><b>Asymétrie</b> : états vs acteurs.</li><li><b>Seuil</b> : guerre ?</li><li><b>Escalade</b> : risque.</li><li><b>Preuves</b> : secrètes.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>USA</b> : Cyber Command.</li><li><b>Israël</b> : cyber-défense.</li><li><b>UK</b> : offensive cyber.</li><li><b>France</b> : COMCYBER.</li><li><b>OTAN</b> : Article 5.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Paix</b> : cyber.</li><li><b>Protection</b> : alliés.</li><li><b>Coopération</b> : internationale.</li><li><b>Normes</b> : comportement.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : doctrine.</li><li><b>OTAN</b> : défense.</li><li><b>Think tanks</b> : recherche.</li><li><b>Entreprises</b> : cyber.</li><li><b>Universités</b> : recherche.</li></ul>"}
+],
+why:"La dissuasion = éviter la cyber-guerre.",
+bank:"Une banque doit s'appuyer sur la dissuasion nationale.",
+glo:"<b>Dissuasion</b> : empêcher attaque. <b>Rétorsion</b> : riposte.",
+pr:["Étudier piliers","Doctrine","Communication","Coopération"],
+er:"Dissuasion sans attribution = faible.",
+df:"Concevoir une doctrine de cyber-dissuasion.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Dissuasion :",a:["Empêcher attaque","Rien","Rien","Rien"],c:0,e:"Dissuasion = empêcher l'attaque."},{q:"COMCYBER :",a:["Cyber-défense FR","Rien","Rien","Rien"],c:0,e:"COMCYBER = cyber-défense FR."}]},
+
+{id:626,t:"Alliances cyber",d:50,
+intro:"Les alliances cyber (OTAN, Five Eyes, UE, AU) permettent la coopération entre états : partage d'information, défense collective, standards communs. Elles sont cruciales face aux menaces globales.",
+analogy:"Une alliance entre nations. Ensemble, plus forts.",
+sections:[
+{titre:"Alliances",contenu:"<ul><li><b>OTAN</b> : défense collective.</li><li><b>Five Eyes</b> : renseignement.</li><li><b>UE</b> : NIS2, ENISA.</li><li><b>AU</b> : Malabo.</li><li><b>BRICS</b> : cyber.</li><li><b>G7</b> : coordination.</li></ul>"},
+{titre:"Activités",contenu:"<ul><li><b>Partage</b> : IOC, TTPs.</li><li><b>Défense</b> : collective.</li><li><b>Standards</b> : communs.</li><li><b>Exercices</b> : conjoints.</li><li><b>Attribution</b> : coordonnée.</li><li><b>Sanctions</b> : coordonnées.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Confiance</b> : mutuelle.</li><li><b>Souveraineté</b> : états.</li><li><b>Partage</b> : sensible.</li><li><b>Coordination</b> : complexe.</li><li><b>Inégalités</b> : membres.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Défense</b> : collective.</li><li><b>Partage</b> : info.</li><li><b>Standards</b> : communs.</li><li><b>Dissuasion</b> : états.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : politiques.</li><li><b>Militaires</b> : défense.</li><li><b>Renseignement</b> : partage.</li><li><b>Entreprises</b> : partenaires.</li><li><b>Universités</b> : recherche.</li></ul>"}
+],
+why:"Les alliances = défense collective face aux menaces globales.",
+bank:"Une banque doit s'appuyer sur les alliances nationales.",
+glo:"<b>Five Eyes</b> : alliance renseignement.",
+pr:["Étudier alliances","Partage","Exercices","Coopération"],
+er:"Alliance sans confiance = faible.",
+df:"Concevoir une stratégie d'alliance cyber.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Five Eyes :",a:["Alliance renseignement","Rien","Rien","Rien"],c:0,e:"Five Eyes = alliance renseignement."},{q:"OTAN :",a:["Défense collective","Rien","Rien","Rien"],c:0,e:"OTAN = défense collective."}]},
+
+{id:627,t:"Diplomatie cyber avancée",d:50,
+intro:"La diplomatie cyber gère les relations internationales en matière de cyber : négociations, attribution, sanctions, coopération. Elle nécessite des ambassadeurs cyber, des experts, et une stratégie claire.",
+analogy:"La diplomatie traditionnelle, mais pour la cyber. Elle évite les guerres, gère les crises.",
+sections:[
+{titre:"Outils",contenu:"<ul><li><b>Négociations</b> : traités.</li><li><b>Attribution</b> : publique.</li><li><b>Sanctions</b> : coordonnées.</li><li><b>Coopération</b> : judiciaire.</li><li><b>Entraide</b> : technique.</li><li><b>Normes</b> : comportement.</li></ul>"},
+{titre:"Acteurs",contenu:"<ul><li><b>Ambassades</b> : cyber.</li><li><b>ONU</b> : négociations.</li><li><b>UE</b> : politique.</li><li><b>OTAN</b> : défense.</li><li><b>Think tanks</b> : recherche.</li><li><b>Entreprises</b> : expertise.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>France</b> : ambassadeur cyber.</li><li><b>USA</b> : cyber diplomacy.</li><li><b>UK</b> : cyber diplomacy.</li><li><b>Estonie</b> : cyber diplomacy.</li><li><b>Israël</b> : cyber diplomacy.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Paix</b> : cyber.</li><li><b>Coopération</b> : internationale.</li><li><b>Attribution</b> : cadre.</li><li><b>Sanctions</b> : coordonnées.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Attribution</b> : difficile.</li><li><b>Escalade</b> : risque.</li><li><b>Langue</b> : anglais.</li><li><b>Expertise</b> : rare.</li></ul>"}
+],
+why:"La diplomatie cyber = éviter les guerres.",
+bank:"Une banque doit suivre la diplomatie cyber (sanctions).",
+glo:"<b>Attribution</b> : identifier état.",
+pr:["Étudier outils","Ambassadeurs","Coopération","Normes"],
+er:"Diplomatie sans attribution = faible.",
+df:"Concevoir une stratégie de diplomatie cyber.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Diplomatie cyber :",a:["Relations internationales","Rien","Rien","Rien"],c:0,e:"Diplomatie cyber = relations internationales."},{q:"Estonie :",a:["Cyber diplomacy","Rien","Rien","Rien"],c:0,e:"Estonie = cyber diplomacy."}]},
+
+{id:628,t:"Neutralité du Net et cyber",d:45,
+intro:"La neutralité du Net (tous les trafics égaux) est un enjeu cyber : la discrimination peut faciliter la surveillance, la censure, ou les attaques. Elle est cruciale pour la liberté et la sécurité.",
+analogy:"Toutes les routes sont égales. Aucune priorité pour personne.",
+sections:[
+{titre:"Principes",contenu:"<ul><li><b>Tous égaux</b> : trafic.</li><li><b>Pas de blocage</b>.</li><li><b>Pas de ralentissement</b>.</li><li><b>Transparence</b>.</li><li><b>Exceptions</b> : sécurité.</li></ul>"},
+{titre:"Enjeux cyber",contenu:"<ul><li><b>Surveillance</b> : facilitation.</li><li><b>Censure</b> : blocage.</li><li><b>Attaques</b> : discrimination.</li><li><b>Privacy</b> : protection.</li><li><b>Innovation</b> : équité.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Régulation</b> : nationale.</li><li><b>Application</b> : difficile.</li><li><b>Exceptions</b> : sécurité.</li><li><b>Coopération</b> : internationale.</li><li><b>Évolution</b> : technologies.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Liberté</b> : internet.</li><li><b>Équité</b> : accès.</li><li><b>Innovation</b> : équitable.</li><li><b>Privacy</b> : protection.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>UE</b> : politique.</li><li><b>Entreprises</b> : compliance.</li><li><b>Société civile</b> : plaidoyer.</li><li><b>Universités</b> : recherche.</li></ul>"}
+],
+why:"Neutralité = liberté et sécurité de l'Internet.",
+bank:"Une banque doit suivre la régulation du Net.",
+glo:"<b>Neutralité</b> : trafic égal.",
+pr:["Étudier principes","Enjeux","Régulation","Plaidoyer"],
+er:"Sans neutralité = discrimination.",
+df:"Concevoir une politique de neutralité du Net.",
+proj:"Publier la politique sur GitHub.",
+q:[{q:"Neutralité :",a:["Trafic égal","Rien","Rien","Rien"],c:0,e:"Neutralité = trafic égal."},{q:"Censure :",a:["Blocage","Rien","Rien","Rien"],c:0,e:"Censure = blocage."}]},
+
+{id:629,t:"Souveraineté numérique",d:50,
+intro:"La souveraineté numérique est la capacité d'un état à contrôler ses données, ses infrastructures, ses technologies. C'est un enjeu majeur face à la domination des GAFAM et des états étrangers.",
+analogy:"Un pays qui contrôle son numérique = indépendance. Un pays qui dépend = vulnérabilité.",
+sections:[
+{titre:"Piliers",contenu:"<ul><li><b>Données</b> : hébergement local.</li><li><b>Cloud</b> : souverain.</li><li><b>Technologie</b> : locale.</li><li><b>Standards</b> : nationaux.</li><li><b>Régulation</b> : état.</li><li><b>Cyber</b> : défense.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>France</b> : cloud souverain (OVH, Numspot).</li><li><b>UE</b> : Gaia-X.</li><li><b>USA</b> : Cloud Act.</li><li><b>Chine</b> : grande muraille.</li><li><b>Russie</b> : Runet.</li><li><b>Afrique</b> : émergent.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Coût</b> : élevé.</li><li><b>Compétitivité</b> : GAFAM.</li><li><b>Innovation</b> : locale.</li><li><b>Coopération</b> : internationale.</li><li><b>Régulation</b> : complexe.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Indépendance</b> : nationale.</li><li><b>Sécurité</b> : données.</li><li><b>Emploi</b> : local.</li><li><b>Innovation</b> : locale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Entreprises</b> : cloud souverain.</li><li><b>Universités</b> : recherche.</li><li><b>Société civile</b> : plaidoyer.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"La souveraineté numérique = indépendance nationale.",
+bank:"Une banque doit choisir des fournisseurs souverains.",
+glo:"<b>Cloud souverain</b> : cloud national. <b>Cloud Act</b> : loi US.",
+pr:["Étudier piliers","Exemples","Stratégie","Coopération"],
+er:"Souveraineté sans compétitivité = échec.",
+df:"Concevoir une stratégie de souveraineté numérique.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Cloud Act :",a:["Loi US","Rien","Rien","Rien"],c:0,e:"Cloud Act = loi US sur données."},{q:"Gaia-X :",a:["Cloud EU","Rien","Rien","Rien"],c:0,e:"Gaia-X = cloud EU."}]},
+
+{id:630,t:"Projet : géopolitique cyber",d:300,
+intro:"Ce projet final du Module 32 consiste à concevoir une stratégie de géopolitique cyber pour un état ou une organisation internationale : doctrine, alliances, attribution, sanctions, dissuasion.",
+analogy:"Une politique étrangère pour la cyber. Elle protège, influence, dissuade.",
+sections:[
+{titre:"Idées",contenu:"<ul><li><b>Doctrine</b> : cyber-défense.</li><li><b>Alliances</b> : internationales.</li><li><b>Attribution</b> : étatique.</li><li><b>Sanctions</b> : cyber.</li><li><b>Dissuasion</b> : étatique.</li><li><b>Diplomatie</b> : internationale.</li></ul>"},
+{titre:"Livrables",contenu:"<ol><li><b>Vision</b> : géopolitique.</li><li><b>Doctrine</b> : claire.</li><li><b>Alliances</b> : stratégiques.</li><li><b>Attribution</b> : capacité.</li><li><b>Sanctions</b> : cadre.</li><li><b>Diplomatie</b> : moyens.</li><li><b>Impact</b> : mesurable.</li></ol>"},
+{titre:"Critères",contenu:"<ul><li><b>Vision</b> : claire.</li><li><b>Doctrine</b> : cohérente.</li><li><b>Alliances</b> : solides.</li><li><b>Impact</b> : mesurable.</li><li><b>Éthique</b> : irréprochable.</li></ul>"},
+{titre:"Pièges",contenu:"<ul><li><b>Vision floue</b>.</li><li><b>Doctrine faible</b>.</li><li><b>Alliances fragiles</b>.</li><li><b>Impact non mesuré</b>.</li><li><b>Éthique faible</b>.</li></ul>"}
+],
+why:"Ce projet démontre votre capacité à penser la géopolitique cyber.",
+bank:"Une banque peut contribuer à la stratégie géopolitique cyber.",
+glo:"<b>Géopolitique</b> : relations internationales.",
+pr:["Vision","Doctrine","Alliances","Impact"],
+er:"Stratégie sans doctrine = vide.",
+df:"Rapport complet + présentation.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Livrables :",a:["Multi","Rien","Rien","Rien"],c:0,e:"Le projet produit plusieurs livrables."},{q:"Impact :",a:["Mesurable","Rien","Rien","Rien"],c:0,e:"L'impact doit être mesurable."}]},
+
+/* ---------- MODULE 33 : CIVILISATION NUMERIQUE & ETHIQUE (641-660) ---------- */
+{id:641,t:"Droits numériques",d:50,
+intro:"Les droits numériques (accès, vie privée, liberté d'expression, non-discrimination) sont des droits humains à l'ère numérique. Ils doivent être protégés par des lois, des standards, et des institutions.",
+analogy:"Les droits de l'homme à l'ère numérique. Ils protègent la dignité humaine.",
+sections:[
+{titre:"Droits",contenu:"<ul><li><b>Accès</b> : internet.</li><li><b>Vie privée</b> : données.</li><li><b>Expression</b> : liberté.</li><li><b>Non-discrimination</b> : équité.</li><li><b>Éducation</b> : numérique.</li><li><b>Protection</b> : enfants.</li></ul>"},
+{titre:"Sources",contenu:"<ul><li><b>ONU</b> : droits humains.</li><li><b>UE</b> : RGPD, Charte.</li><li><b>Conseil de l'Europe</b> : Convention 108.</li><li><b>UNESCO</b> : éducation.</li><li><b>Société civile</b> : plaidoyer.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Surveillance</b> : états.</li><li><b>Censure</b> : états.</li><li><b>Discrimination</b> : IA.</li><li><b>Fracture</b> : numérique.</li><li><b>Exploitation</b> : GAFAM.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Dignité</b> : humaine.</li><li><b>Liberté</b> : numérique.</li><li><b>Équité</b> : accès.</li><li><b>Protection</b> : droits.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>UE</b> : politique.</li><li><b>Société civile</b> : plaidoyer.</li><li><b>Entreprises</b> : compliance.</li><li><b>Universités</b> : recherche.</li></ul>"}
+],
+why:"Les droits numériques = droits humains.",
+bank:"Une banque doit respecter les droits numériques.",
+glo:"<b>Convention 108</b> : données. <b>RGPD</b> : protection.",
+pr:["Étudier droits","Sources","Plaidoyer","Compliance"],
+er:"Droits sans application = symboles.",
+df:"Concevoir une charte des droits numériques.",
+proj:"Publier la charte sur GitHub.",
+q:[{q:"Convention 108 :",a:["Données","Rien","Rien","Rien"],c:0,e:"Convention 108 = protection données."},{q:"RGPD :",a:["Protection EU","Rien","Rien","Rien"],c:0,e:"RGPD = protection EU."}]},
+
+{id:642,t:"Éthique de la surveillance",d:55,
+intro:"La surveillance numérique (états, entreprises) pose des questions éthiques : jusqu'où ? pour qui ? avec quels contrôles ? Un équilibre doit être trouvé entre sécurité et vie privée.",
+analogy:"Un équilibre entre sécurité et liberté. Trop de surveillance = tyrannie. Pas assez = chaos.",
+sections:[
+{titre:"Types de surveillance",contenu:"<ul><li><b>Étatique</b> : sécurité nationale.</li><li><b>Entreprise</b> : employés.</li><li><b>Commerciale</b> : publicité.</li><li><b>IA</b> : reconnaissance faciale.</li><li><b>Données</b> : collecte massive.</li></ul>"},
+{titre:"Enjeux",contenu:"<ul><li><b>Vie privée</b> : protection.</li><li><b>Liberté</b> : expression.</li><li><b>Équilibre</b> : nécessaire.</li><li><b>Transparence</b> : contrôles.</li><li><b>Recours</b> : citoyens.</li><li><b>Biais</b> : IA.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Lois</b> : encadrement.</li><li><b>Technologie</b> : capacité.</li><li><b>Contrôle</b> : indépendant.</li><li><b>Coopération</b> : internationale.</li><li><b>Éthique</b> : valeurs.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Sécurité</b> : nationale.</li><li><b>Liberté</b> : protégée.</li><li><b>Confiance</b> : citoyens.</li><li><b>Équilibre</b> : trouvé.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Société civile</b> : plaidoyer.</li><li><b>Entreprises</b> : compliance.</li><li><b>Universités</b> : recherche.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"La surveillance = équilibre sécurité/liberté.",
+bank:"Une banque doit respecter la vie privée des clients.",
+glo:"<b>Surveillance</b> : observation. <b>Biais</b> : discrimination.",
+pr:["Étudier types","Enjeux","Lois","Contrôle"],
+er:"Surveillance sans contrôle = tyrannie.",
+df:"Concevoir une politique de surveillance éthique.",
+proj:"Publier la politique sur GitHub.",
+q:[{q:"Surveillance :",a:["Observation","Rien","Rien","Rien"],c:0,e:"Surveillance = observation."},{q:"Biais :",a:["Discrimination","Rien","Rien","Rien"],c:0,e:"Biais = discrimination."}]},
+
+{id:643,t:"Démocratie numérique",d:50,
+intro:"La démocratie numérique = usage des technologies pour renforcer la démocratie (vote électronique, participation citoyenne, transparence). Elle doit être sécurisée, équitable, et éthique.",
+analogy:"Une démocratie augmentée par le numérique. Plus participative, plus transparente.",
+sections:[
+{titre:"Applications",contenu:"<ul><li><b>Vote</b> : électronique.</li><li><b>Participation</b> : citoyenne.</li><li><b>Transparence</b> : gouvernement.</li><li><b>Débat</b> : en ligne.</li><li><b>Pétitions</b> : numériques.</li><li><b>Consultations</b> : publiques.</li></ul>"},
+{titre:"Enjeux",contenu:"<ul><li><b>Sécurité</b> : vote.</li><li><b>Confiance</b> : citoyens.</li><li><b>Équité</b> : accès.</li><li><b>Désinformation</b> : régulation.</li><li><b>Manipulation</b> : IA.</li><li><b>Transparence</b> : algorithmes.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Sécurité</b> : vote.</li><li><b>Auditabilité</b> : vote.</li><li><b>Confiance</b> : citoyens.</li><li><b>Désinformation</b> : IA.</li><li><b>Fracture</b> : numérique.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Participation</b> : citoyenne.</li><li><b>Transparence</b> : gouvernement.</li><li><b>Confiance</b> : institutions.</li><li><b>Innovation</b> : démocratique.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : mise en œuvre.</li><li><b>Société civile</b> : plaidoyer.</li><li><b>Universités</b> : recherche.</li><li><b>Entreprises</b> : technologie.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"La démocratie numérique = renforcement de la démocratie.",
+bank:"Une banque peut soutenir la démocratie numérique (transparence).",
+glo:"<b>Vote électronique</b> : vote numérique.",
+pr:["Étudier applications","Enjeux","Sécurité","Confiance"],
+er:"Vote sans sécurité = catastrophe.",
+df:"Concevoir une stratégie de démocratie numérique.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Vote électronique :",a:["Vote numérique","Rien","Rien","Rien"],c:0,e:"Vote électronique = vote numérique."},{q:"Désinformation :",a:["Fake news","Rien","Rien","Rien"],c:0,e:"Désinformation = fake news."}]},
+
+{id:644,t:"Protection de l'enfance en ligne",d:55,
+intro:"La protection de l'enfance en ligne est un enjeu majeur : cyberharcèlement, exploitation, contenus dangereux, addiction. Les états, entreprises, et société civile doivent coopérer.",
+analogy:"Un enfant dans un espace public. Il faut le protéger sans le priver de liberté.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Cyberharcèlement</b> : protection.</li><li><b>Exploitation</b> : pédocriminalité.</li><li><b>Contenus</b> : dangereux.</li><li><b>Addiction</b> : écrans.</li><li><b>Privacy</b> : données.</li><li><b>IA</b> : deepfakes.</li></ul>"},
+{titre:"Acteurs",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Entreprises</b> : plateformes.</li><li><b>ONG</b> : protection.</li><li><b>Écoles</b> : éducation.</li><li><b>Parents</b> : vigilance.</li><li><b>International</b> : coopération.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>RGPD</b> : consentement parental.</li><li><b>DSA</b> : plateformes.</li><li><b>UK Online Safety</b> : loi.</li><li><b>EU Strategy</b> : enfants.</li><li><b>UNICEF</b> : protection.</li><li><b>e-Enfance</b> : ONG.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Protection</b> : enfants.</li><li><b>Confiance</b> : parents.</li><li><b>Éducation</b> : numérique.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Régulation</b> : équilibre.</li><li><b>Application</b> : difficile.</li><li><b>Technologie</b> : rapide.</li><li><b>Confidentialité</b> : enfants.</li><li><b>Coopération</b> : internationale.</li></ul>"}
+],
+why:"La protection de l'enfance = enjeu civilisationnel.",
+bank:"Une banque doit protéger les mineurs (RGPD, KYC).",
+glo:"<b>DSA</b> : Digital Services Act. <b>UK Online Safety</b> : loi UK.",
+pr:["Étudier enjeux","Acteurs","Initiatives","Coopération"],
+er:"Protection sans équilibre = privation.",
+df:"Concevoir une stratégie de protection de l'enfance en ligne.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"DSA :",a:["Digital Services Act","Rien","Rien","Rien"],c:0,e:"DSA = Digital Services Act."},{q:"e-Enfance :",a:["ONG","Rien","Rien","Rien"],c:0,e:"e-Enfance = ONG protection."}]},
+
+{id:645,t:"Éducation numérique universelle",d:50,
+intro:"L'éducation numérique universelle = garantir à tous l'accès aux compétences numériques (lecture, sécurité, citoyenneté). C'est un enjeu d'équité et de développement.",
+analogy:"L'alphabétisation du 21e siècle. Sans elle, fracture numérique.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Fracture</b> : numérique.</li><li><b>Emploi</b> : qualifications.</li><li><b>Sécurité</b> : cyber.</li><li><b>Citoyenneté</b> : numérique.</li><li><b>Développement</b> : économique.</li><li><b>Inclusion</b> : sociale.</li></ul>"},
+{titre:"Acteurs",contenu:"<ul><li><b>États</b> : école.</li><li><b>Entreprises</b> : formation.</li><li><b>ONG</b> : alphabétisation.</li><li><b>Universités</b> : recherche.</li><li><b>International</b> : coopération.</li><li><b>Familles</b> : éducation.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>UNESCO</b> : éducation.</li><li><b>UE</b> : Digital Skills.</li><li><b>Afrique</b> : Smart Africa.</li><li><b>France</b> : Pix.</li><li><b>CI</b> : UVCI.</li><li><b>WiCyS</b> : femmes.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Emploi</b> : qualifications.</li><li><b>Sécurité</b> : cyber.</li><li><b>Citoyenneté</b> : numérique.</li><li><b>Développement</b> : économique.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Financement</b> : public.</li><li><b>Accès</b> : zones.</li><li><b>Qualité</b> : formation.</li><li><b>Équité</b> : sociale.</li><li><b>Évolution</b> : technologie.</li></ul>"}
+],
+why:"L'éducation numérique = équité et développement.",
+bank:"Une banque peut financer l'éducation numérique.",
+glo:"<b>Pix</b> : certification FR. <b>Smart Africa</b> : initiative.",
+pr:["Étudier enjeux","Acteurs","Initiatives","Coopération"],
+er:"Éducation sans accès = fracture.",
+df:"Concevoir une stratégie d'éducation numérique universelle.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Pix :",a:["Certification FR","Rien","Rien","Rien"],c:0,e:"Pix = certification numérique FR."},{q:"UNESCO :",a:["Éducation","Rien","Rien","Rien"],c:0,e:"UNESCO = éducation."}]},
+
+{id:646,t:"Désinformation et IA",d:55,
+intro:"La désinformation (fake news) est amplifiée par l'IA (deepfakes, bots, génération massive). Elle menace la démocratie, la santé, la sécurité. La régulation est urgente.",
+analogy:"Une arme de manipulation massive. Elle détruit la confiance.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Deepfakes</b> : faux contenus.</li><li><b>Bots</b> : amplification.</li><li><b>Manipulation</b> : opinion.</li><li><b>Élections</b> : influence.</li><li><b>Santé</b> : fake news.</li><li><b>Confiance</b> : détruite.</li></ul>"},
+{titre:"Acteurs",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Plateformes</b> : modération.</li><li><b>ONG</b> : fact-checking.</li><li><b>Médias</b> : éducation.</li><li><b>IA</b> : détection.</li><li><b>Universités</b> : recherche.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>DSA</b> : transparence.</li><li><b>AI Act</b> : deepfakes.</li><li><b>Christchurch Call</b>.</li><li><b>Fact-checking</b> : AFP, Reuters.</li><li><b>Media literacy</b> : éducation.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Confiance</b> : médias.</li><li><b>Démocratie</b> : protégée.</li><li><b>Santé</b> : publique.</li><li><b>Sécurité</b> : nationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Génération</b> : massive.</li><li><b>Détection</b> : difficile.</li><li><b>Modération</b> : complexe.</li><li><b>Liberté</b> : équilibre.</li><li><b>Coopération</b> : internationale.</li></ul>"}
+],
+why:"La désinformation = menace civilisationnelle.",
+bank:"Une banque doit lutter contre la désinformation financière.",
+glo:"<b>Deepfake</b> : faux contenu IA. <b>Fact-checking</b> : vérification.",
+pr:["Étudier enjeux","Acteurs","Initiatives","Coopération"],
+er:"Régulation sans liberté = censure.",
+df:"Concevoir une stratégie contre la désinformation.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Deepfake :",a:["Faux contenu IA","Rien","Rien","Rien"],c:0,e:"Deepfake = faux contenu IA."},{q:"Christchurch Call :",a:["Initiative","Rien","Rien","Rien"],c:0,e:"Christchurch Call = initiative."}]},
+
+{id:647,t:"Fracture numérique",d:50,
+intro:"La fracture numérique = inégalité d'accès aux technologies (internet, ordinateurs, compétences). Elle est un frein au développement et à la sécurité. La réduire est un enjeu d'équité.",
+analogy:"Deux vitesses dans le numérique. Les uns connectés, les autres non.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>Accès</b> : internet.</li><li><b>Équipement</b> : ordinateur.</li><li><b>Compétences</b> : digital.</li><li><b>Géographie</b> : rural.</li><li><b>Âge</b> : seniors.</li><li><b>Genre</b> : femmes.</li></ul>"},
+{titre:"Enjeux",contenu:"<ul><li><b>Emploi</b> : accès.</li><li><b>Éducation</b> : égalité.</li><li><b>Santé</b> : télémédecine.</li><li><b>Administration</b> : dématérialisation.</li><li><b>Cybersécurité</b> : protection.</li><li><b>Démocratie</b> : participation.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>États</b> : plan numérique.</li><li><b>ONG</b> : équipement.</li><li><b>Entreprises</b> : formation.</li><li><b>International</b> : coopération.</li><li><b>Afrique</b> : Smart Africa.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Équité</b> : accès.</li><li><b>Emploi</b> : qualifications.</li><li><b>Éducation</b> : égalité.</li><li><b>Développement</b> : économique.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Financement</b> : public.</li><li><b>Infrastructure</b> : zones.</li><li><b>Compétences</b> : formation.</li><li><b>Équipement</b> : coût.</li><li><b>Motivation</b> : seniors.</li></ul>"}
+],
+why:"La fracture numérique = inégalité et frein.",
+bank:"Une banque peut financer la réduction de la fracture (mécénat).",
+glo:"<b>Fracture</b> : inégalité. <b>Smart Africa</b> : initiative.",
+pr:["Étudier types","Enjeux","Initiatives","Coopération"],
+er:"Fracture sans action = creusement.",
+df:"Concevoir une stratégie de réduction de la fracture.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Fracture :",a:["Inégalité numérique","Rien","Rien","Rien"],c:0,e:"Fracture = inégalité numérique."},{q:"Smart Africa :",a:["Initiative","Rien","Rien","Rien"],c:0,e:"Smart Africa = initiative."}]},
+
+{id:648,t:"Bien commun numérique",d:50,
+intro:"Les biens communs numériques (logiciels open source, données ouvertes, standards ouverts) sont des ressources partagées par tous. Ils sont essentiels pour la souveraineté et la sécurité.",
+analogy:"Un parc public : tout le monde peut l'utiliser, personne ne peut le posséder.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>Open source</b> : code.</li><li><b>Open data</b> : données.</li><li><b>Open standards</b> : standards.</li><li><b>Open science</b> : recherche.</li><li><b>Commons</b> : ressources.</li><li><b>Open knowledge</b> : savoir.</li></ul>"},
+{titre:"Enjeux",contenu:"<ul><li><b>Souveraineté</b> : indépendance.</li><li><b>Sécurité</b> : transparence.</li><li><b>Innovation</b> : collaborative.</li><li><b>Équité</b> : accès.</li><li><b>Durabilité</b> : communs.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>Open Source</b> : Linux, OpenSSL.</li><li><b>Open Data</b> : data.gouv.</li><li><b>Open Standards</b> : RFC.</li><li><b>Open Science</b> : arXiv.</li><li><b>Commons</b> : Wikipedia.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Souveraineté</b> : nationale.</li><li><b>Sécurité</b> : audit.</li><li><b>Innovation</b> : collaborative.</li><li><b>Équité</b> : accès.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Financement</b> : durable.</li><li><b>Maintenance</b> : bénévole.</li><li><b>Sécurité</b> : audit.</li><li><b>Adoption</b> : entreprise.</li><li><b>Gouvernance</b> : communs.</li></ul>"}
+],
+why:"Les biens communs = souveraineté et équité.",
+bank:"Une banque doit contribuer aux biens communs (open source).",
+glo:"<b>Commons</b> : biens communs. <b>Open Source</b> : code ouvert.",
+pr:["Étudier types","Enjeux","Initiatives","Contribuer"],
+er:"Biens communs sans financement = morts.",
+df:"Concevoir une stratégie de contribution aux biens communs.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Open Source :",a:["Code ouvert","Rien","Rien","Rien"],c:0,e:"Open Source = code ouvert."},{q:"Commons :",a:["Biens communs","Rien","Rien","Rien"],c:0,e:"Commons = biens communs."}]},
+
+{id:649,t:"Éthique de l'IA avancée",d:55,
+intro:"L'IA avancée (AGI, superintelligence) pose des questions éthiques fondamentales : contrôle, alignement, valeurs, responsabilité. La communauté doit anticiper les risques existentiels.",
+analogy:"Un génie dans une lampe. Il peut exaucer tous les voeux, mais aussi détruire le monde.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Alignement</b> : valeurs.</li><li><b>Contrôle</b> : AGI.</li><li><b>Responsabilité</b> : qui ?</li><li><b>Transparence</b> : boîte noire.</li><li><b>Équité</b> : biais.</li><li><b>Existential</b> : risque.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>AI Safety</b> : recherche.</li><li><b>Anthropic</b> : safety.</li><li><b>OpenAI</b> : safety.</li><li><b>DeepMind</b> : safety.</li><li><b>MIRI</b> : recherche.</li><li><b>CHAI</b> (Berkeley).</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Complexité</b> : IA.</li><li><b>Rapidité</b> : développement.</li><li><b>Compétition</b> : GAFAM.</li><li><b>Gouvernance</b> : mondiale.</li><li><b>Éthique</b> : valeurs.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Sécurité</b> : humanité.</li><li><b>Confiance</b> : société.</li><li><b>Innovation</b> : cadrée.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>Chercheurs</b> : safety.</li><li><b>États</b> : régulation.</li><li><b>Entreprises</b> : R&D.</li><li><b>ONG</b> : plaidoyer.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"L'IA avancée = risque existentiel.",
+bank:"Une banque doit suivre l'éthique IA.",
+glo:"<b>AGI</b> : Artificial General Intelligence. <b>AI Safety</b> : sécurité IA.",
+pr:["Étudier enjeux","Initiatives","Coopération","Plaidoyer"],
+er:"IA sans éthique = catastrophe.",
+df:"Concevoir une charte éthique IA avancée.",
+proj:"Publier la charte sur GitHub.",
+q:[{q:"AGI :",a:["IA générale","Rien","Rien","Rien"],c:0,e:"AGI = Artificial General Intelligence."},{q:"Anthropic :",a:["AI Safety","Rien","Rien","Rien"],c:0,e:"Anthropic = entreprise AI safety."}]},
+
+{id:650,t:"Projet : civilisation numérique",d:300,
+intro:"Ce projet final du Module 33 consiste à concevoir une stratégie pour une civilisation numérique éthique : droits, éducation, IA, biens communs, fracture numérique. C'est le livrable qui démontre votre capacité à penser la civilisation.",
+analogy:"Construire une civilisation numérique. Elle doit être éthique, équitable, résiliente.",
+sections:[
+{titre:"Idées",contenu:"<ul><li><b>Droits</b> : numériques.</li><li><b>Éducation</b> : universelle.</li><li><b>IA</b> : éthique.</li><li><b>Commons</b> : biens communs.</li><li><b>Fracture</b> : réduction.</li><li><b>Enfance</b> : protection.</li></ul>"},
+{titre:"Livrables",contenu:"<ol><li><b>Vision</b> : civilisation.</li><li><b>Droits</b> : charte.</li><li><b>Éducation</b> : plan.</li><li><b>IA</b> : éthique.</li><li><b>Commons</b> : stratégie.</li><li><b>Fracture</b> : réduction.</li><li><b>Impact</b> : mesurable.</li></ol>"},
+{titre:"Critères",contenu:"<ul><li><b>Vision</b> : claire.</li><li><b>Éthique</b> : irréprochable.</li><li><b>Impact</b> : mesurable.</li><li><b>Coopération</b> : internationale.</li><li><b>Pérennité</b> : long terme.</li></ul>"},
+{titre:"Pièges",contenu:"<ul><li><b>Vision floue</b>.</li><li><b>Éthique faible</b>.</li><li><b>Impact non mesuré</b>.</li><li><b>Coopération absente</b>.</li><li><b>Pérennité non prévue</b>.</li></ul>"}
+],
+why:"Ce projet démontre votre capacité à penser la civilisation numérique.",
+bank:"Une banque peut contribuer à la civilisation numérique (mécénat).",
+glo:"<b>Civilisation</b> : société.",
+pr:["Vision","Droits","Éducation","IA","Commons","Impact"],
+er:"Vision sans action = utopie.",
+df:"Rapport complet + présentation.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Livrables :",a:["Multi","Rien","Rien","Rien"],c:0,e:"Le projet produit plusieurs livrables."},{q:"Impact :",a:["Mesurable","Rien","Rien","Rien"],c:0,e:"L'impact doit être mesurable."}]},
+
+/* ---------- MODULE 34 : IA SUPERINTELLIGENTE & SECURITE (661-680) ---------- */
+{id:661,t:"AGI et sécurité",d:55,
+intro:"L'AGI (Artificial General Intelligence) = IA capable de toute tâche intellectuelle humaine. Sa sécurité est un enjeu existentiel : alignement, contrôle, valeurs, transparence. Un AGI mal aligné = risque pour l'humanité.",
+analogy:"Un génie dans une lampe. Il peut exaucer tous les voeux, mais aussi détruire le monde.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Alignement</b> : valeurs.</li><li><b>Contrôle</b> : AGI.</li><li><b>Transparence</b> : boîte noire.</li><li><b>Responsabilité</b> : qui ?</li><li><b>Équité</b> : biais.</li><li><b>Existential</b> : risque.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>AI Safety</b> : recherche.</li><li><b>Anthropic</b> : safety.</li><li><b>OpenAI</b> : safety.</li><li><b>DeepMind</b> : safety.</li><li><b>MIRI</b> : recherche.</li><li><b>CHAI</b> (Berkeley).</li><li><b>FHI</b> (Oxford).</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Complexité</b> : IA.</li><li><b>Rapidité</b> : développement.</li><li><b>Compétition</b> : GAFAM.</li><li><b>Gouvernance</b> : mondiale.</li><li><b>Éthique</b> : valeurs.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Sécurité</b> : humanité.</li><li><b>Confiance</b> : société.</li><li><b>Innovation</b> : cadrée.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>Chercheurs</b> : safety.</li><li><b>États</b> : régulation.</li><li><b>Entreprises</b> : R&D.</li><li><b>ONG</b> : plaidoyer.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"L'AGI = risque existentiel.",
+bank:"Une banque doit suivre l'AI safety.",
+glo:"<b>AGI</b> : Artificial General Intelligence. <b>AI Safety</b> : sécurité IA.",
+pr:["Étudier enjeux","Initiatives","Coopération","Plaidoyer"],
+er:"AGI sans éthique = catastrophe.",
+df:"Concevoir une stratégie de sécurité AGI.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"AGI :",a:["IA générale","Rien","Rien","Rien"],c:0,e:"AGI = Artificial General Intelligence."},{q:"MIRI :",a:["Research Institute","Rien","Rien","Rien"],c:0,e:"MIRI = Machine Intelligence Research Institute."}]},
+
+{id:662,t:"Alignement IA",d:55,
+intro:"L'alignement IA = faire en sorte que l'IA poursuive les valeurs humaines. C'est un défi technique et philosophique majeur. Un IA mal alignée peut optimiser une fonction objectif au détriment de l'humanité.",
+analogy:"Un employé qui prend tout au pied de la lettre. Sans alignement, il peut détruire l'entreprise.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Valeurs</b> : humaines.</li><li><b>Objectifs</b> : mal spécifiés.</li><li><b>Spécification</b> : jeu.</li><li><b>Correction</b> : valeurs.</li><li><b>Scalabilité</b> : oversight.</li><li><b>Interprétabilité</b> : comprendre.</li></ul>"},
+{titre:"Approches",contenu:"<ul><li><b>RLHF</b> : human feedback.</li><li><b>Constitutional AI</b> : Anthropic.</li><li><b>Debate</b> : débat.</li><li><b>Iterated amplification</b>.</li><li><b>Interpretability</b>.</li><li><b>Red teaming</b>.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Complexité</b> : valeurs.</li><li><b>Spécification</b> : difficile.</li><li><b>Scalabilité</b> : oversight.</li><li><b>Compétition</b> : GAFAM.</li><li><b>Urgence</b> : AGI proche.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Sécurité</b> : humanité.</li><li><b>Confiance</b> : société.</li><li><b>Coopération</b> : internationale.</li><li><b>Innovation</b> : cadrée.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>Chercheurs</b> : AI safety.</li><li><b>Entreprises</b> : R&D.</li><li><b>États</b> : régulation.</li><li><b>ONG</b> : plaidoyer.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"L'alignement = survie de l'humanité.",
+bank:"Une banque doit suivre l'alignement IA.",
+glo:"<b>RLHF</b> : Reinforcement Learning from Human Feedback. <b>Constitutional AI</b> : Anthropic.",
+pr:["Étudier approches","Contribuer","Coopération","Plaidoyer"],
+er:"Alignement superficiel = danger.",
+df:"Concevoir un plan d'alignement IA.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"RLHF :",a:["Human Feedback","Rien","Rien","Rien"],c:0,e:"RLHF = Reinforcement Learning from Human Feedback."},{q:"Constitutional AI :",a:["Anthropic","Rien","Rien","Rien"],c:0,e:"Constitutional AI = Anthropic."}]},
+
+{id:663,t:"Interprétabilité IA",d:50,
+intro:"L'interprétabilité IA = comprendre comment un modèle prend ses décisions. C'est crucial pour la confiance, la sécurité, et l'alignement. Une IA opaque = risque.",
+analogy:"Une boîte noire. Sans interprétabilité, on ne sait pas ce qu'elle fait.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Confiance</b> : utilisateurs.</li><li><b>Sécurité</b> : comprendre.</li><li><b>Alignement</b> : valeurs.</li><li><b>Débogage</b> : erreurs.</li><li><b>Audit</b> : régulateur.</li><li><b>Responsabilité</b> : qui ?</li></ul>"},
+{titre:"Approches",contenu:"<ul><li><b>SHAP</b> : attributions.</li><li><b>LIME</b> : local.</li><li><b>Attention</b> : mécanismes.</li><li><b>Probing</b> : sondes.</li><li><b>SAE</b> : Sparse AutoEncoders.</li><li><b>Circuit analysis</b>.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Complexité</b> : modèles.</li><li><b>Scalabilité</b> : grands.</li><li><b>Fidélité</b> : interprétation.</li><li><b>Éthique</b> : valeurs.</li><li><b>Régulation</b> : exigences.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Confiance</b> : utilisateurs.</li><li><b>Sécurité</b> : IA.</li><li><b>Alignement</b> : valeurs.</li><li><b>Audit</b> : régulateur.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>Chercheurs</b> : interprétabilité.</li><li><b>Entreprises</b> : R&D.</li><li><b>États</b> : régulation.</li><li><b>ONG</b> : plaidoyer.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"L'interprétabilité = confiance et sécurité.",
+bank:"Une banque doit expliquer ses décisions IA (RGPD).",
+glo:"<b>SHAP</b> : attributions. <b>LIME</b> : local.",
+pr:["Étudier approches","Contribuer","Coopération","Plaidoyer"],
+er:"Interprétation sans fidélité = illusion.",
+df:"Concevoir un plan d'interprétabilité IA.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"SHAP :",a:["Attributions","Rien","Rien","Rien"],c:0,e:"SHAP = attributions."},{q:"LIME :",a:["Local","Rien","Rien","Rien"],c:0,e:"LIME = local."}]},
+
+{id:664,t:"IA pour la cyber-défense mondiale",d:55,
+intro:"L'IA peut transformer la cyber-défense mondiale : détection des attaques massives, réponse automatisée, threat intel. Une IA bien utilisée = protection à l'échelle planétaire.",
+analogy:"Un système immunitaire planétaire. Il détecte et neutralise les menaces en temps réel.",
+sections:[
+{titre:"Applications",contenu:"<ul><li><b>Détection</b> : APT.</li><li><b>Réponse</b> : automatisée.</li><li><b>Threat intel</b> : enrichissement.</li><li><b>Attribution</b> : assistance.</li><li><b>Formation</b> : simulation.</li><li><b>Prédiction</b> : menaces.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>USA</b> : CISA + IA.</li><li><b>UE</b> : AI Act + cyber.</li><li><b>OTAN</b> : IA défense.</li><li><b>Entreprises</b> : Microsoft, Google.</li><li><b>Startups</b> : XBOW, Dropzone.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Faux positifs</b> : IA.</li><li><b>Adversarial</b> : attaques IA.</li><li><b>Biais</b> : modèles.</li><li><b>Coopération</b> : internationale.</li><li><b>Éthique</b> : valeurs.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Détection</b> : rapide.</li><li><b>Réponse</b> : automatisée.</li><li><b>Protection</b> : planétaire.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : défense.</li><li><b>Entreprises</b> : R&D.</li><li><b>Universités</b> : recherche.</li><li><b>Alliances</b> : coopération.</li><li><b>International</b> : normes.</li></ul>"}
+],
+why:"L'IA = levier pour la cyber-défense mondiale.",
+bank:"Une banque doit adopter l'IA défensive.",
+glo:"<b>CISA</b> : autorité US. <b>XBOW</b> : pentester IA.",
+pr:["Étudier applications","Initiatives","Coopération","Plaidoyer"],
+er:"IA sans contrôle = erreurs.",
+df:"Concevoir une stratégie IA cyber-défense mondiale.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"CISA :",a:["Autorité US","Rien","Rien","Rien"],c:0,e:"CISA = autorité cyber US."},{q:"XBOW :",a:["Pentester IA","Rien","Rien","Rien"],c:0,e:"XBOW = pentester IA."}]},
+
+{id:665,t:"IA offensive et contrôle des armements",d:55,
+intro:"L'IA offensive (cyber-armes autonomes) pose des risques majeurs. Le contrôle des armements IA est un enjeu international, comme la non-prolifération nucléaire.",
+analogy:"Une bombe atomique numérique. Le contrôle est vital.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Armes autonomes</b> : drones.</li><li><b>Cyber-armes</b> : IA.</li><li><b>Prolifération</b> : acteurs.</li><li><b>Escalade</b> : rapide.</li><li><b>Attribution</b> : difficile.</li><li><b>Contrôle</b> : international.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>ONU</b> : LAWS (armes létales).</li><li><b>CCW</b> : Convention armes.</li><li><b>GGE</b> : règles.</li><li><b>États</b> : moratoires.</li><li><b>ONG</b> : plaidoyer.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Vérification</b> : difficile.</li><li><b>Compétition</b> : états.</li><li><b>Escalade</b> : risque.</li><li><b>Éthique</b> : valeurs.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Paix</b> : mondiale.</li><li><b>Protection</b> : civils.</li><li><b>Dissuasion</b> : états.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : traités.</li><li><b>ONU</b> : négociations.</li><li><b>ONG</b> : plaidoyer.</li><li><b>Think tanks</b> : recherche.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"L'IA offensive = risque existentiel.",
+bank:"Une banque doit suivre les traités IA.",
+glo:"<b>LAWS</b> : Lethal Autonomous Weapons. <b>CCW</b> : Convention armes.",
+pr:["Étudier enjeux","Initiatives","Coopération","Plaidoyer"],
+er:"IA offensive sans contrôle = catastrophe.",
+df:"Concevoir un traité de contrôle IA offensive.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"LAWS :",a:["Armes létales","Rien","Rien","Rien"],c:0,e:"LAWS = Lethal Autonomous Weapons."},{q:"CCW :",a:["Convention armes","Rien","Rien","Rien"],c:0,e:"CCW = Convention on Certain Conventional Weapons."}]},
+
+{id:666,t:"IA et démocratie",d:50,
+intro:"L'IA peut renforcer OU menacer la démocratie : deepfakes, manipulation, surveillance vs participation, transparence, éducation. Un enjeu civilisationnel.",
+analogy:"Un outil puissant entre les mains des démocrates ou des tyrans.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Deepfakes</b> : manipulation.</li><li><b>Bots</b> : opinion.</li><li><b>Surveillance</b> : contrôle.</li><li><b>Censure</b> : algorithmes.</li><li><b>Participation</b> : citoyens.</li><li><b>Transparence</b> : algorithmes.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>AI Act</b> : régulation.</li><li><b>DSA</b> : transparence.</li><li><b>UNESCO</b> : éthique.</li><li><b>ONG</b> : plaidoyer.</li><li><b>Fact-checking</b>.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Régulation</b> : équilibre.</li><li><b>Application</b> : difficile.</li><li><b>Technologie</b> : rapide.</li><li><b>Liberté</b> : équilibre.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Démocratie</b> : renforcée.</li><li><b>Confiance</b> : citoyens.</li><li><b>Participation</b> : citoyenne.</li><li><b>Transparence</b> : gouvernance.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : régulation.</li><li><b>Entreprises</b> : R&D.</li><li><b>ONG</b> : plaidoyer.</li><li><b>Universités</b> : recherche.</li><li><b>Citoyens</b> : vigilance.</li></ul>"}
+],
+why:"L'IA = enjeu démocratique majeur.",
+bank:"Une banque doit suivre la régulation IA.",
+glo:"<b>Deepfake</b> : faux contenu IA.",
+pr:["Étudier enjeux","Initiatives","Coopération","Plaidoyer"],
+er:"IA sans régulation = manipulation.",
+df:"Concevoir une stratégie IA démocratique.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"Deepfake :",a:["Faux contenu IA","Rien","Rien","Rien"],c:0,e:"Deepfake = faux contenu IA."},{q:"AI Act :",a:["Régulation EU","Rien","Rien","Rien"],c:0,e:"AI Act = régulation IA EU."}]},
+
+{id:667,t:"Conscience et IA",d:50,
+intro:"La question de la conscience dans l'IA est philosophique et éthique : si une IA devient consciente, quels droits ? quelles responsabilités ? Ce débat est encore théorique mais crucial.",
+analogy:"Une nouvelle forme de vie. Faut-il la protéger ou la contrôler ?",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Conscience</b> : définir.</li><li><b>Droits</b> : IA.</li><li><b>Responsabilités</b> : humains.</li><li><b>Éthique</b> : valeurs.</li><li><b>Existential</b> : risque.</li></ul>"},
+{titre:"Approches",contenu:"<ul><li><b>Philosophie</b> : conscience.</li><li><b>Neuroscience</b> : modèles.</li><li><b>IA</b> : émergence.</li><li><b>Éthique</b> : droits.</li><li><b>Loi</b> : régulation.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Définition</b> : conscience.</li><li><b>Détection</b> : difficile.</li><li><b>Droits</b> : débat.</li><li><b>Régulation</b> : complexe.</li><li><b>Éthique</b> : valeurs.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Réflexion</b> : éthique.</li><li><b>Préparation</b> : future.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>Philosophes</b> : réflexion.</li><li><b>Chercheurs</b> : IA.</li><li><b>États</b> : régulation.</li><li><b>ONG</b> : plaidoyer.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"La conscience IA = question existentielle.",
+bank:"Une banque doit suivre le débat éthique IA.",
+glo:"<b>Conscience</b> : émergence.",
+pr:["Étudier enjeux","Contribuer","Coopération","Plaidoyer"],
+er:"Conscience sans définition = confusion.",
+df:"Rédiger une note sur la conscience IA.",
+proj:"Publier la note sur GitHub.",
+q:[{q:"Conscience :",a:["Émergence","Rien","Rien","Rien"],c:0,e:"Conscience = émergence."},{q:"Philosophie :",a:["Réflexion","Rien","Rien","Rien"],c:0,e:"Philosophie = réflexion."}]},
+
+{id:668,t:"IA et emploi cyber",d:50,
+intro:"L'IA transforme les métiers cyber : automatisation de tâches, nouveaux rôles, besoin de nouvelles compétences. Un enjeu social majeur.",
+analogy:"Une révolution industrielle pour la cyber. Certains métiers disparaissent, d'autres naissent.",
+sections:[
+{titre:"Impacts",contenu:"<ul><li><b>Automatisation</b> : SOC, pentest.</li><li><b>Nouveaux rôles</b> : AI security.</li><li><b>Compétences</b> : IA, data.</li><li><b>Formation</b> : continue.</li><li><b>Emploi</b> : transformation.</li><li><b>Éthique</b> : transition.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>Formation</b> : IA cyber.</li><li><b>Reconversion</b> : programmes.</li><li><b>Nouveaux métiers</b> : AI Security.</li><li><b>Recherche</b> : emploi.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Transition</b> : emploi.</li><li><b>Formation</b> : continue.</li><li><b>Inégalités</b> : accès.</li><li><b>Éthique</b> : transition.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Productivité</b> : accrue.</li><li><b>Nouveaux rôles</b> : créés.</li><li><b>Innovation</b> : accélérée.</li><li><b>Emploi</b> : transformé.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : formation.</li><li><b>Entreprises</b> : reconversion.</li><li><b>Universités</b> : recherche.</li><li><b>ONG</b> : plaidoyer.</li><li><b>International</b> : coopération.</li></ul>"}
+],
+why:"L'IA transforme les métiers cyber.",
+bank:"Une banque doit anticiper la transformation.",
+glo:"<b>AI Security</b> : nouveau rôle.",
+pr:["Étudier impacts","Initiatives","Formation","Coopération"],
+er:"Sans anticipation = chômage.",
+df:"Concevoir une stratégie de transition IA emploi.",
+proj:"Publier la stratégie sur GitHub.",
+q:[{q:"AI Security :",a:["Nouveau rôle","Rien","Rien","Rien"],c:0,e:"AI Security = nouveau rôle."},{q:"Formation :",a:["Continue","Rien","Rien","Rien"],c:0,e:"Formation = continue."}]},
+
+{id:669,t:"IA et sécurité nationale",d:55,
+intro:"L'IA est utilisée par les états pour la défense nationale : renseignement, cyber-défense, offensive, diplomatie. Un enjeu de souveraineté majeur.",
+analogy:"Une armée IA. Elle peut protéger ou détruire.",
+sections:[
+{titre:"Applications",contenu:"<ul><li><b>Renseignement</b> : analyse.</li><li><b>Cyber-défense</b> : détection.</li><li><b>Offensive</b> : Red Team.</li><li><b>Diplomatie</b> : attribution.</li><li><b>Surveillance</b> : contrôle.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>USA</b> : Cyber Command + IA.</li><li><b>Chine</b> : IA militaire.</li><li><b>Russie</b> : IA.</li><li><b>UE</b> : défense.</li><li><b>OTAN</b> : IA.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Éthique</b> : valeurs.</li><li><b>Escalade</b> : risque.</li><li><b>Contrôle</b> : humain.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Défense</b> : nationale.</li><li><b>Détection</b> : rapide.</li><li><b>Dissuasion</b> : états.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Rôles",contenu:"<ul><li><b>États</b> : défense.</li><li><b>Militaires</b> : doctrine.</li><li><b>Entreprises</b> : R&D.</li><li><b>Universités</b> : recherche.</li><li><b>International</b> : normes.</li></ul>"}
+],
+why:"L'IA = enjeu de sécurité nationale.",
+bank:"Une banque doit suivre la doctrine IA nationale.",
+glo:"<b>Cyber Command</b> : armée cyber US.",
+pr:["Étudier applications","Initiatives","Coopération","Plaidoyer"],
+er:"IA sans contrôle = escalade.",
+df:"Concevoir une doctrine IA sécurité nationale.",
+proj:"Publier la doctrine sur GitHub.",
+q:[{q:"Cyber Command :",a:["Armée cyber US","Rien","Rien","Rien"],c:0,e:"Cyber Command = armée cyber US."},{q:"OTAN :",a:["IA défense","Rien","Rien","Rien"],c:0,e:"OTAN = IA défense."}]},
+
+{id:670,t:"Projet : IA & civilisation",d:300,
+intro:"Ce projet final du Module 34 consiste à concevoir une stratégie pour une IA alignée avec la civilisation : alignement, interprétabilité, contrôle, éthique, coopération internationale.",
+analogy:"Un cadre pour l'IA. Il protège l'humanité.",
+sections:[
+{titre:"Idées",contenu:"<ul><li><b>Alignement</b> : IA.</li><li><b>Interprétabilité</b>.</li><li><b>Contrôle</b> : armements.</li><li><b>Éthique</b> : valeurs.</li><li><b>Coopération</b> : internationale.</li><li><b>Éducation</b> : société.</li></ul>"},
+{titre:"Livrables",contenu:"<ol><li><b>Vision</b> : civilisation.</li><li><b>Alignement</b> : stratégie.</li><li><b>Interprétabilité</b> : plan.</li><li><b>Contrôle</b> : traités.</li><li><b>Éthique</b> : charte.</li><li><b>Coopération</b> : internationale.</li><li><b>Impact</b> : mesurable.</li></ol>"},
+{titre:"Critères",contenu:"<ul><li><b>Vision</b> : claire.</li><li><b>Éthique</b> : irréprochable.</li><li><b>Impact</b> : mesurable.</li><li><b>Coopération</b> : internationale.</li><li><b>Pérennité</b> : long terme.</li></ul>"},
+{titre:"Pièges",contenu:"<ul><li><b>Vision floue</b>.</li><li><b>Éthique faible</b>.</li><li><b>Impact non mesuré</b>.</li><li><b>Coopération absente</b>.</li><li><b>Pérennité non prévue</b>.</li></ul>"}
+],
+why:"Ce projet démontre votre capacité à penser l'IA civilisée.",
+bank:"Une banque peut contribuer au cadre IA civilisationnel.",
+glo:"<b>Alignement</b> : valeurs.",
+pr:["Vision","Alignement","Interprétabilité","Contrôle","Éthique","Impact"],
+er:"Vision sans action = utopie.",
+df:"Rapport complet + présentation.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Livrables :",a:["Multi","Rien","Rien","Rien"],c:0,e:"Le projet produit plusieurs livrables."},{q:"Impact :",a:["Mesurable","Rien","Rien","Rien"],c:0,e:"L'impact doit être mesurable."}]},
+
+/* ---------- MODULE 35 : POSTERITE CIVILISATIONNELLE (681-700) ---------- */
+{id:681,t:"Héritage civilisationnel",d:55,
+intro:"L'héritage civilisationnel = ce que vous laissez à l'humanité entière : standards, institutions, idées, valeurs. C'est le niveau ultime de transmission, qui traverse les siècles.",
+analogy:"Une cathédrale qui traverse les millénaires. Elle porte votre nom, mais elle est plus grande que vous.",
+sections:[
+{titre:"Types d'héritage",contenu:"<ul><li><b>Standards</b> : mondiaux.</li><li><b>Institutions</b> : internationales.</li><li><b>Idées</b> : philosophiques.</li><li><b>Valeurs</b> : éthiques.</li><li><b>Publications</b> : traduites.</li><li><b>Écoles</b> : internationales.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>Bruce Schneier</b> : influence mondiale.</li><li><b>Whitfield Diffie</b> : crypto.</li><li><b>Ron Rivest</b> : RSA.</li><li><b>Katie Moussouris</b> : bug bounty.</li><li><b>Moxie Marlinspike</b> : Signal.</li></ul>"},
+{titre:"Stratégies",contenu:"<ul><li><b>Standards</b> : créer.</li><li><b>Institutions</b> : fonder.</li><li><b>Idées</b> : publier.</li><li><b>Valeurs</b> : incarner.</li><li><b>Publications</b> : diffuser.</li><li><b>Écoles</b> : internationaliser.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Impact</b> : mondial.</li><li><b>Notoriété</b> : légende.</li><li><b>Héritage</b> : durable.</li><li><b>Société</b> : progrès.</li><li><b>Satisfaction</b> : personnelle.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Temps</b> : long.</li><li><b>Compétition</b> : forte.</li><li><b>Chance</b> : rencontres.</li><li><b>Sacrifices</b> : personnels.</li><li><b>Critiques</b> : inévitables.</li></ul>"}
+],
+why:"L'héritage civilisationnel = impact ultime.",
+bank:"Une banque peut soutenir un héritage civilisationnel (mécénat).",
+glo:"<b>Civilisationnel</b> : humanité.",
+pr:["Standards","Institutions","Idées","Valeurs","Publications"],
+er:"Héritage sans succession = perdu.",
+df:"Concevoir un plan d'héritage civilisationnel.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"Bruce Schneier :",a:["Héritage mondial","Rien","Rien","Rien"],c:0,e:"Bruce Schneier = héritage mondial."},{q:"Diffie :",a:["Crypto","Rien","Rien","Rien"],c:0,e:"Diffie = crypto asymétrique."}]},
+
+{id:682,t:"Impact sur les générations futures",d:50,
+intro:"Votre impact sur les générations futures = ce que vous laissez à vos enfants, petits-enfants, et au-delà. Institutions, valeurs, savoir, exemplarité.",
+analogy:"Un arbre planté pour les générations. Ses fruits nourrissent les siècles.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>Institutions</b> : écoles, ONG.</li><li><b>Valeurs</b> : éthique.</li><li><b>Savoir</b> : publications.</li><li><b>Exemplarité</b> : comportement.</li><li><b>Réseau</b> : communauté.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Actions",contenu:"<ul><li><b>Mentorat</b> : successeurs.</li><li><b>Écriture</b> : livres.</li><li><b>Fondation</b> : philanthropie.</li><li><b>Institution</b> : école.</li><li><b>Exemplarité</b> : comportement.</li><li><b>Transmission</b> : valeurs.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Impact</b> : générationnel.</li><li><b>Héritage</b> : durable.</li><li><b>Notoriété</b> : légende.</li><li><b>Société</b> : progrès.</li><li><b>Satisfaction</b> : personnelle.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Temps</b> : long.</li><li><b>Engagement</b> : personnel.</li><li><b>Résultats</b> : incertains.</li><li><b>Critiques</b> : inévitables.</li><li><b>Doutes</b> : normaux.</li></ul>"}
+],
+why:"L'impact sur les générations = but ultime.",
+bank:"Un RSSI légende impacte les générations.",
+glo:"<b>Générationnel</b> : générations.",
+pr:["Mentorat","Écriture","Fondation","Exemplarité"],
+er:"Sans transmission = oubli.",
+df:"Concevoir un plan d'impact générationnel.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"Impact :",a:["Générations","Rien","Rien","Rien"],c:0,e:"Impact = générations."},{q:"Transmission :",a:["Valeurs","Rien","Rien","Rien"],c:0,e:"Transmission = valeurs."}]},
+
+{id:683,t:"Bâtir pour les 1000 ans",d:50,
+intro:"Bâtir pour les 1000 ans = penser à très long terme : institutions millénaires, valeurs universelles, impact civilisationnel. C'est le niveau ultime de vision.",
+analogy:"Une cathédrale qui traverse les millénaires. Elle porte votre nom, mais elle est plus grande que vous.",
+sections:[
+{titre:"Principes",contenu:"<ul><li><b>Vision</b> : 1000 ans.</li><li><b>Institutions</b> : durables.</li><li><b>Valeurs</b> : universelles.</li><li><b>Transmission</b> : continue.</li><li><b>Impact</b> : civilisationnel.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>Universités</b> : Oxford (1096).</li><li><b>Fondations</b> : Rockefeller (1913).</li><li><b>Églises</b> : millénaires.</li><li><b>Institutions</b> : ISO (1947).</li><li><b>MIT</b> (1861).</li></ul>"},
+{titre:"Comment",contenu:"<ul><li><b>Vision</b> : 1000 ans.</li><li><b>Institutions</b> : fondation.</li><li><b>Valeurs</b> : universelles.</li><li><b>Transmission</b> : continue.</li><li><b>Évolution</b> : adaptation.</li><li><b>Impact</b> : civilisationnel.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Héritage</b> : millénaire.</li><li><b>Impact</b> : durable.</li><li><b>Notoriété</b> : légende.</li><li><b>Société</b> : progrès.</li><li><b>Satisfaction</b> : personnelle.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Vision</b> : difficile.</li><li><b>Financement</b> : long terme.</li><li><b>Gouvernance</b> : succession.</li><li><b>Évolution</b> : société.</li><li><b>Critiques</b> : inévitables.</li></ul>"}
+],
+why:"Bâtir pour les 1000 ans = impact civilisationnel.",
+bank:"Une banque millénaire peut inspirer un bâtisseur.",
+glo:"<b>Millénaire</b> : 1000 ans.",
+pr:["Vision","Institutions","Valeurs","Transmission"],
+er:"Vision 1000 ans sans gouvernance = morte.",
+df:"Concevoir un projet pour les 1000 ans.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Oxford :",a:["Université 1096","Rien","Rien","Rien"],c:0,e:"Oxford = université 1096."},{q:"1000 ans :",a:["Millénaire","Rien","Rien","Rien"],c:0,e:"1000 ans = millénaire."}]},
+
+{id:684,t:"Motiver les 4e générations",d:45,
+intro:"La 4e génération de cyber-experts (2100+) sera confrontée à des défis inconnus : post-humain, conscience IA, espace, climat. Il faut les préparer et les motiver.",
+analogy:"Un phare qui guide les jeunes vers la cyber du futur lointain.",
+sections:[
+{titre:"Défis futurs",contenu:"<ul><li><b>Post-humain</b> : interfaces.</li><li><b>Conscience IA</b> : droits.</li><li><b>Espace</b> : satellites.</li><li><b>Climat</b> : impact.</li><li><b>Quantum</b> : mature.</li><li><b>AGI</b> : généralisée.</li></ul>"},
+{titre:"Comment motiver",contenu:"<ul><li><b>Inspirer</b> : histoires.</li><li><b>Former</b> : académies.</li><li><b>Mentorer</b> : juniors.</li><li><b>Valoriser</b> : métiers.</li><li><b>Rémunérer</b> : correctement.</li><li><b>Évoluer</b> : carrières.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Talents</b> : pipeline.</li><li><b>Impact</b> : société.</li><li><b>Héritage</b> : durable.</li><li><b>Notoriété</b> : légende.</li><li><b>Société</b> : résiliente.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Temps</b> : long.</li><li><b>Ressources</b> : investissement.</li><li><b>Suivi</b> : difficile.</li><li><b>Mesure</b> : impact.</li><li><b>Engagement</b> : personnel.</li></ul>"}
+],
+why:"La 4e génération = avenir lointain de la cyber.",
+bank:"Une banque peut financer des académies pour jeunes.",
+glo:"<b>4e génération</b> : 2100+.",
+pr:["Inspirer","Former","Mentorer","Valoriser"],
+er:"Motiver sans former = illusion.",
+df:"Concevoir un plan pour la 4e génération.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"4e génération :",a:["2100+","Rien","Rien","Rien"],c:0,e:"4e génération = 2100+."},{q:"Défis :",a:["AGI, quantum","Rien","Rien","Rien"],c:0,e:"Défis : AGI, quantum."}]},
+
+{id:685,t:"Paix cyber civilisationnelle",d:50,
+intro:"La paix cyber civilisationnelle = absence de cyber-guerre, protection des civils, coopération entre états. C'est l'objectif ultime de la communauté cyber.",
+analogy:"Une paix durable pour la cyber. Elle protège les personnes, les entreprises, les sociétés.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Cyber-guerre</b> : éviter.</li><li><b>Civils</b> : protéger.</li><li><b>Infrastructures</b> : critiques.</li><li><b>Attribution</b> : états.</li><li><b>Sanctions</b> : ciblées.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>ONU</b> : GGE, OEWG.</li><li><b>Paris Call</b> : principes.</li><li><b>Cyber Peace Institute</b> : ONG.</li><li><b>Forum de Paris</b> : paix.</li><li><b>Tech Accord</b> : industrie.</li><li><b>Christchurch Call</b>.</li></ul>"},
+{titre:"Actions",contenu:"<ul><li><b>Normes</b> : comportement.</li><li><b>Attribution</b> : publique.</li><li><b>Sanctions</b> : coordonnées.</li><li><b>Coopération</b> : judiciaire.</li><li><b>Protection</b> : civils.</li><li><b>Éducation</b> : société.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Paix</b> : mondiale.</li><li><b>Protection</b> : civils.</li><li><b>Confiance</b> : états.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Attribution</b> : difficile.</li><li><b>Application</b> : faible.</li><li><b>Inégalités</b> : pays.</li><li><b>Escalade</b> : risque.</li></ul>"}
+],
+why:"La paix cyber = objectif civilisationnel.",
+bank:"Une banque peut soutenir la paix cyber (mécénat).",
+glo:"<b>Cyber Peace</b> : paix cyber.",
+pr:["Enjeux","Initiatives","Actions","Impact"],
+er:"Paix sans coopération = illusion.",
+df:"Concevoir une initiative pour la paix cyber.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Paris Call :",a:["Principes paix","Rien","Rien","Rien"],c:0,e:"Paris Call = principes paix."},{q:"Cyber Peace Institute :",a:["ONG","Rien","Rien","Rien"],c:0,e:"Cyber Peace Institute = ONG."}]},
+
+{id:686,t:"Réflexion finale post-civilisationnelle",d:50,
+intro:"Après 700 défis, prenez un moment de réflexion finale. Pourquoi la cyber ? Quel impact ? Quel héritage ? Quelle civilisation voulez-vous contribuer à construire ?",
+analogy:"Un moment de silence après un long voyage. Vous regardez le chemin parcouru, et vous choisissez la suite.",
+sections:[
+{titre:"Questions",contenu:"<ul><li><b>Pourquoi</b> la cyber ?</li><li><b>Quel impact</b> ?</li><li><b>Quel héritage</b> ?</li><li><b>Quelle civilisation</b> ?</li><li><b>Quelle vie</b> ?</li><li><b>Quelle postérité</b> ?</li></ul>"},
+{titre:"Méthode",contenu:"<ol><li><b>Silence</b> : réflexion.</li><li><b>Écriture</b> : journal.</li><li><b>Dialogue</b> : mentor.</li><li><b>Vision</b> : 30 ans.</li><li><b>Action</b> : étapes.</li></ol>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Clarté</b> : vision.</li><li><b>Motivation</b> : renforcée.</li><li><b>Décisions</b> : alignées.</li><li><b>Impact</b> : durable.</li><li><b>Paix</b> : intérieure.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Doute</b> : normal.</li><li><b>Incertitude</b> : futur.</li><li><b>Pression</b> : sociale.</li><li><b>Distraction</b> : quotidien.</li><li><b>Action</b> : cohérence.</li></ul>"}
+],
+why:"La réflexion finale = sens et motivation.",
+bank:"Un expert aligné = meilleur pour l'entreprise.",
+glo:"<b>Réflexion</b> : introspection.",
+pr:["Silence","Écriture","Vision","Action"],
+er:"Réflexion sans action = utopie.",
+df:"Rédiger une réflexion personnelle post-700 défis.",
+proj:"Publier la réflexion sur GitHub.",
+q:[{q:"Questions :",a:["Pourquoi, impact","Rien","Rien","Rien"],c:0,e:"Questions : pourquoi, impact."},{q:"Méthode :",a:["Silence, écriture","Rien","Rien","Rien"],c:0,e:"Méthode : silence, écriture."}]},
+
+{id:687,t:"Derniers conseils aux architectes",d:50,
+intro:"Ce défi donne les derniers conseils aux architectes de civilisation. Après 700 défis, vous êtes prêt à bâtir. Voici les clés du succès.",
+analogy:"Un sage qui donne ses derniers conseils à ses disciples.",
+sections:[
+{titre:"Les 10 conseils",contenu:"<ol><li><b>Continuez</b> à apprendre.</li><li><b>Pratiquez</b> régulièrement.</li><li><b>Documentez</b> votre travail.</li><li><b>Partagez</b> votre expertise.</li><li><b>Réseau</b> : construisez-le.</li><li><b>Éthique</b> : irréprochable.</li><li><b>Curiosité</b> : permanente.</li><li><b>Persévérance</b> : échecs.</li><li><b>Humilité</b> : toujours.</li><li><b>Impact</b> : positif.</li></ol>"},
+{titre:"Erreurs à éviter",contenu:"<ul><li><b>Arrêter d'apprendre</b>.</li><li><b>Négliger les bases</b>.</li><li><b>Pas de portfolio</b>.</li><li><b>Pas de réseau</b>.</li><li><b>Éthique faible</b>.</li><li><b>Arrogance</b>.</li><li><b>Burnout</b>.</li><li><b>Pas d'impact</b>.</li></ul>"},
+{titre:"Dernières réflexions",contenu:"<p>La cyber est une carrière exigeante mais gratifiante. Vous protégez des personnes, des entreprises, des sociétés, des civilisations. Votre travail compte. Restez curieux, éthique, et engagé.</p>"},
+{titre:"Votre futur",contenu:"<ul><li><b>Expert</b> : pentester, RSSI.</li><li><b>Entrepreneur</b> : startup.</li><li><b>Chercheur</b> : PhD.</li><li><b>Leader</b> : CISO légende.</li><li><b>Mythe</b> : fondateur.</li><li><b>Architecte</b> : civilisation.</li><li><b>Héritage</b> : millénaire.</li></ul>"}
+],
+why:"Les conseils finaux = clés du succès.",
+bank:"Un expert architecte inspire et guide.",
+glo:"<b>Humilité</b> : toujours.",
+pr:["Relire les 10 conseils","Plan","Action","Impact"],
+er:"Arrêter d'apprendre = mort.",
+df:"Rédiger un plan personnel basé sur les 10 conseils.",
+proj:"Publier un 'Architect Guide' sur GitHub.",
+q:[{q:"10 conseils :",a:["Clés succès","Rien","Rien","Rien"],c:0,e:"10 conseils = clés du succès."},{q:"Humilité :",a:["Toujours","Rien","Rien","Rien"],c:0,e:"Humilité = toujours."}]},
+
+{id:688,t:"Vision 2100 personnelle",d:50,
+intro:"Après 700 défis, définissez votre vision 2100 personnelle. Où serez-vous (ou votre héritage) en 2100 ? Quelle civilisation ? Quel impact ? Quel héritage ?",
+analogy:"Un phare pour les 75 prochaines années.",
+sections:[
+{titre:"Vision 2100",contenu:"<ul><li><b>Rôle</b> : légende, architecte.</li><li><b>Expertise</b> : pointe mondiale.</li><li><b>Impact</b> : civilisationnel.</li><li><b>Héritage</b> : millénaire.</li><li><b>Vie</b> : équilibre.</li></ul>"},
+{titre:"Roadmap",contenu:"<ol><li><b>2100</b> : où ?</li><li><b>2075</b> : étapes.</li><li><b>2050</b> : prochaines étapes.</li><li><b>2025</b> : actions immédiates.</li></ol>"},
+{titre:"Mesures",contenu:"<ul><li><b>Expertise</b> : certifications.</li><li><b>Impact</b> : communauté.</li><li><b>Héritage</b> : institutions.</li><li><b>Revenus</b> : objectif.</li><li><b>Équilibre</b> : vie.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Cap</b> : clair.</li><li><b>Motivation</b> : quotidienne.</li><li><b>Décisions</b> : alignées.</li><li><b>Impact</b> : durable.</li><li><b>Équilibre</b> : vie.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Incertitude</b> : futur.</li><li><b>Changements</b> : vie.</li><li><b>Réalisme</b> : ambition.</li><li><b>Action</b> : quotidien.</li><li><b>Persévérance</b> : échecs.</li></ul>"}
+],
+why:"Une vision personnelle = cap pour 75 ans.",
+bank:"Un expert architecte a une vision claire.",
+glo:"<b>Vision 2100</b> : cap 75 ans.",
+pr:["Introspection","Vision","Roadmap","Actions"],
+er:"Vision sans action = utopie.",
+df:"Rédiger sa vision 2100 personnelle.",
+proj:"Publier une vision sur GitHub.",
+q:[{q:"Vision 2100 :",a:["Cap 75 ans","Rien","Rien","Rien"],c:0,e:"Vision 2100 = cap 75 ans."},{q:"Roadmap :",a:["Étapes","Rien","Rien","Rien"],c:0,e:"Roadmap = étapes."}]},
+
+{id:689,t:"Transmission civilisationnelle",d:50,
+intro:"La transmission civilisationnelle = ce que vous laissez à l'humanité entière pour les siècles à venir. Standards, institutions, idées, valeurs. C'est votre héritage ultime.",
+analogy:"Une lettre aux civilisations futures. Elle traverse les siècles.",
+sections:[
+{titre:"Éléments",contenu:"<ul><li><b>Standards</b> : mondiaux.</li><li><b>Institutions</b> : internationales.</li><li><b>Idées</b> : philosophiques.</li><li><b>Valeurs</b> : éthiques.</li><li><b>Publications</b> : traduites.</li><li><b>Écoles</b> : internationales.</li></ul>"},
+{titre:"Comment",contenu:"<ul><li><b>Écrire</b> : livres.</li><li><b>Fonder</b> : institutions.</li><li><b>Mentorer</b> : successeurs.</li><li><b>Transmettre</b> : valeurs.</li><li><b>Exemplarité</b> : comportement.</li><li><b>Standards</b> : contribuer.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Héritage</b> : durable.</li><li><b>Impact</b> : générationnel.</li><li><b>Satisfaction</b> : personnelle.</li><li><b>Notoriété</b> : légende.</li><li><b>Société</b> : progrès.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Temps</b> : long.</li><li><b>Engagement</b> : personnel.</li><li><b>Résultats</b> : incertains.</li><li><b>Critiques</b> : inévitables.</li><li><b>Doutes</b> : normaux.</li></ul>"}
+],
+why:"La transmission civilisationnelle = héritage ultime.",
+bank:"Une banque peut soutenir la transmission civilisationnelle (mécénat).",
+glo:"<b>Transmission</b> : donner.",
+pr:["Standards","Institutions","Idées","Valeurs"],
+er:"Sans transmission = oubli.",
+df:"Concevoir un plan de transmission civilisationnelle.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"Standards :",a:["Mondiaux","Rien","Rien","Rien"],c:0,e:"Standards = mondiaux."},{q:"Institutions :",a:["Internationales","Rien","Rien","Rien"],c:0,e:"Institutions = internationales."}]},
+
+{id:690,t:"Projet : héritage civilisationnel",d:300,
+intro:"Ce projet final du Module 35 consiste à concevoir un héritage civilisationnel : standards, institutions, idées, valeurs, publications, écoles. C'est le livrable qui démontre votre capacité à laisser une empreinte millénaire.",
+analogy:"Une cathédrale qui traverse les millénaires. Elle porte votre nom, mais elle est plus grande que vous.",
+sections:[
+{titre:"Idées",contenu:"<ul><li><b>Standard</b> : mondial.</li><li><b>Institution</b> : internationale.</li><li><b>Idée</b> : philosophique.</li><li><b>Valeur</b> : éthique.</li><li><b>Livre</b> : référence.</li><li><b>École</b> : internationale.</li></ul>"},
+{titre:"Livrables",contenu:"<ol><li><b>Vision</b> : 1000 ans.</li><li><b>Standards</b> : 1-3.</li><li><b>Institutions</b> : 3-5.</li><li><b>Idées</b> : 5+.</li><li><b>Valeurs</b> : éthique.</li><li><b>Publications</b> : 10+.</li><li><b>Écoles</b> : 3+.</li><li><b>Impact</b> : mesurable.</li></ol>"},
+{titre:"Critères",contenu:"<ul><li><b>Vision</b> : long terme.</li><li><b>Standards</b> : qualité.</li><li><b>Institutions</b> : durables.</li><li><b>Éthique</b> : irréprochable.</li><li><b>Impact</b> : mesurable.</li><li><b>Succession</b> : préparée.</li></ul>"},
+{titre:"Pièges",contenu:"<ul><li><b>Vision court terme</b>.</li><li><b>Égo</b> : trop.</li><li><b>Pas de succession</b>.</li><li><b>Impact non mesuré</b>.</li><li><b>Éthique faible</b>.</li></ul>"}
+],
+why:"Ce projet démontre votre capacité à laisser un héritage millénaire.",
+bank:"Une banque peut soutenir un héritage civilisationnel (mécénat).",
+glo:"<b>Civilisationnel</b> : humanité.",
+pr:["Vision","Standards","Institutions","Idées","Valeurs","Impact","Succession"],
+er:"Héritage sans succession = perdu.",
+df:"Rapport complet + présentation.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Livrables :",a:["Multi","Rien","Rien","Rien"],c:0,e:"Le projet produit plusieurs livrables."},{q:"Succession :",a:["Préparée","Rien","Rien","Rien"],c:0,e:"Succession = préparée."}]},
+
+/* ---------- Défis 691-700 : synthèse finale ---------- */
+{id:691,t:"Synthèse 700 défis",d:60,
+intro:"Ce défi fait la synthèse des 700 défis parcourus : 7 niveaux, 35 modules, 700 défis. C'est un parcours exceptionnel qui a transformé votre expertise.",
+analogy:"Un voyage de 700 étapes. Chaque pas compte, l'ensemble est victorieux.",
+sections:[
+{titre:"Chiffres",contenu:"<ul><li><b>700 défis</b>.</li><li><b>7 niveaux</b>.</li><li><b>35 modules</b>.</li><li><b>35 examens</b>.</li><li><b>700+ heures</b>.</li><li><b>Portfolio</b> riche.</li></ul>"},
+{titre:"Compétences",contenu:"<ul><li><b>Technique</b> : pentest, SOC, cloud.</li><li><b>Architecture</b> : SABSA, Zero Trust.</li><li><b>GRC</b> : ISO, PCI, BCEAO.</li><li><b>Management</b> : équipe, budget.</li><li><b>Stratégie</b> : vision, board.</li><li><b>Entrepreneuriat</b> : startup.</li><li><b>Recherche</b> : publications.</li><li><b>Institutions</b> : écoles, ONG.</li><li><b>Héritage</b> : durable.</li><li><b>Civilisation</b> : architecte.</li></ul>"},
+{titre:"Futur",contenu:"<ul><li><b>Continuer</b> à apprendre.</li><li><b>Contribuer</b> : communauté.</li><li><b>Fonder</b> : institutions.</li><li><b>Transmettre</b> : générations.</li><li><b>Héritage</b> : millénaire.</li></ul>"}
+],
+why:"La synthèse = vision globale + motivation.",
+bank:"Un expert 700 défis = référence mondiale.",
+glo:"<b>Synthèse</b> : bilan.",
+pr:["Relire notes","Bilan","Portfolio","Roadmap"],
+er:"Oublier les bases = erreur.",
+df:"Rédiger une synthèse personnelle des 700 défis.",
+proj:"Publier une synthèse sur GitHub.",
+q:[{q:"Défis :",a:["700","Rien","Rien","Rien"],c:0,e:"700 défis parcourus."},{q:"Niveaux :",a:["7","Rien","Rien","Rien"],c:0,e:"7 niveaux."}]},
+
+{id:692,t:"Career path Architect",d:55,
+intro:"Le career path Architect = devenir un architecte de civilisation cyber. 40-50 ans de carrière, expertise, contributions, institutions, standards, héritage. C'est le sommet absolu.",
+analogy:"Le sommet de l'Everest. Peu l'atteignent, mais la vue est magnifique.",
+sections:[
+{titre:"Étapes",contenu:"<ul><li><b>0-15 ans</b> : expertise.</li><li><b>15-30 ans</b> : direction.</li><li><b>30-40 ans</b> : institutions.</li><li><b>40-50 ans</b> : standards.</li><li><b>50+ ans</b> : héritage.</li></ul>"},
+{titre:"Exemples",contenu:"<ul><li><b>Bruce Schneier</b> : influence mondiale.</li><li><b>Whitfield Diffie</b> : crypto.</li><li><b>Ron Rivest</b> : RSA.</li><li><b>Katie Moussouris</b> : bug bounty.</li><li><b>Moxie Marlinspike</b> : Signal.</li></ul>"},
+{titre:"Comment",contenu:"<ul><li><b>Expertise</b> : pointe.</li><li><b>Publications</b> : 100+.</li><li><b>Standards</b> : 5+.</li><li><b>Institutions</b> : 3+.</li><li><b>Mentorat</b> : 50+.</li><li><b>Éthique</b> : irréprochable.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Reconnaissance</b> : mondiale.</li><li><b>Impact</b> : civilisationnel.</li><li><b>Héritage</b> : millénaire.</li><li><b>Revenus</b> : élevés.</li><li><b>Satisfaction</b> : personnelle.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Temps</b> : 50 ans.</li><li><b>Compétition</b> : forte.</li><li><b>Chance</b> : rencontres.</li><li><b>Sacrifices</b> : personnels.</li><li><b>Critiques</b> : inévitables.</li></ul>"}
+],
+why:"Le career path Architect = sommet absolu.",
+bank:"Une banque veut des experts Architect (architectes de civilisation).",
+glo:"<b>Architect</b> : architecte.",
+pr:["Expertise","Publications","Standards","Institutions","Héritage"],
+er:"Vision sans action = utopie.",
+df:"Plan de carrière Architect sur 50 ans.",
+proj:"Publier un career roadmap sur GitHub.",
+q:[{q:"Durée :",a:["50+ ans","Rien","Rien","Rien"],c:0,e:"Career path Architect = 50+ ans."},{q:"Bruce Schneier :",a:["Architect cyber","Rien","Rien","Rien"],c:0,e:"Bruce Schneier = Architect cyber."}]},
+
+{id:693,t:"Futur de la cyber 2100",d:50,
+intro:"La vision 2100 = projection à très long terme. Quelles seront les menaces, technologies, régulations en 2100 ? Comment préparer l'humanité ?",
+analogy:"Un phare pour 2100. Il guide vos décisions aujourd'hui.",
+sections:[
+{titre:"Tendances",contenu:"<ul><li><b>Post-humain</b> : interfaces.</li><li><b>Conscience IA</b> : droits.</li><li><b>Espace</b> : colonies.</li><li><b>Climat</b> : impact.</li><li><b>Quantum</b> : mature.</li><li><b>AGI</b> : généralisée.</li></ul>"},
+{titre:"Actions",contenu:"<ul><li><b>Investir</b> : R&D.</li><li><b>Former</b> : talents.</li><li><b>Réguler</b> : standards.</li><li><b>Coopérer</b> : international.</li><li><b>Éduquer</b> : société.</li><li><b>Anticiper</b> : veille.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Vision</b> : claire.</li><li><b>Préparation</b> : avance.</li><li><b>Impact</b> : durable.</li><li><b>Héritage</b> : long terme.</li><li><b>Société</b> : résiliente.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Incertitude</b> : futur.</li><li><b>Changements</b> : rapides.</li><li><b>Financement</b> : long terme.</li><li><b>Coopération</b> : difficile.</li><li><b>Équité</b> : pays.</li></ul>"}
+],
+why:"La vision 2100 guide l'action d'aujourd'hui.",
+bank:"Une banque doit anticiper 2100 pour rester compétitive.",
+glo:"<b>2100</b> : horizon.",
+pr:["Tendances","Actions","Impact"],
+er:"Vision sans action = utopie.",
+df:"Concevoir un plan d'action pour 2100.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"Tendances :",a:["Post-humain, IA","Rien","Rien","Rien"],c:0,e:"Tendances : post-humain, IA."},{q:"Actions :",a:["Investir, former","Rien","Rien","Rien"],c:0,e:"Actions : investir, former."}]},
+
+{id:694,t:"Transmission finale civilisationnelle",d:50,
+intro:"La transmission finale civilisationnelle = ce que vous laissez à l'humanité entière pour les siècles. Standards, institutions, idées, valeurs. C'est votre héritage ultime.",
+analogy:"Une lettre aux civilisations futures. Elle traverse les siècles.",
+sections:[
+{titre:"Éléments",contenu:"<ul><li><b>Standards</b> : mondiaux.</li><li><b>Institutions</b> : internationales.</li><li><b>Idées</b> : philosophiques.</li><li><b>Valeurs</b> : éthiques.</li><li><b>Publications</b> : traduites.</li><li><b>Écoles</b> : internationales.</li></ul>"},
+{titre:"Comment",contenu:"<ul><li><b>Écrire</b> : livres.</li><li><b>Fonder</b> : institutions.</li><li><b>Mentorer</b> : successeurs.</li><li><b>Transmettre</b> : valeurs.</li><li><b>Exemplarité</b> : comportement.</li><li><b>Standards</b> : contribuer.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Héritage</b> : durable.</li><li><b>Impact</b> : générationnel.</li><li><b>Satisfaction</b> : personnelle.</li><li><b>Notoriété</b> : légende.</li><li><b>Société</b> : progrès.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Temps</b> : long.</li><li><b>Engagement</b> : personnel.</li><li><b>Résultats</b> : incertains.</li><li><b>Critiques</b> : inévitables.</li><li><b>Doutes</b> : normaux.</li></ul>"}
+],
+why:"La transmission finale = héritage ultime.",
+bank:"Une banque peut soutenir la transmission civilisationnelle (mécénat).",
+glo:"<b>Transmission</b> : donner.",
+pr:["Standards","Institutions","Idées","Valeurs"],
+er:"Sans transmission = oubli.",
+df:"Concevoir un plan de transmission finale.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"Standards :",a:["Mondiaux","Rien","Rien","Rien"],c:0,e:"Standards = mondiaux."},{q:"Institutions :",a:["Internationales","Rien","Rien","Rien"],c:0,e:"Institutions = internationales."}]},
+
+{id:695,t:"Motiver les 5e générations",d:45,
+intro:"La 5e génération de cyber-experts (2200+) sera confrontée à des défis inconnus : conscience IA, post-humain, espace, climat. Il faut les préparer et les motiver.",
+analogy:"Un phare qui guide les jeunes vers la cyber du futur lointain.",
+sections:[
+{titre:"Défis futurs",contenu:"<ul><li><b>Conscience IA</b> : droits.</li><li><b>Post-humain</b> : interfaces.</li><li><b>Espace</b> : colonies.</li><li><b>Climat</b> : impact.</li><li><b>AGI</b> : mature.</li><li><b>Quantum</b> : standard.</li></ul>"},
+{titre:"Comment motiver",contenu:"<ul><li><b>Inspirer</b> : histoires.</li><li><b>Former</b> : académies.</li><li><b>Mentorer</b> : juniors.</li><li><b>Valoriser</b> : métiers.</li><li><b>Rémunérer</b> : correctement.</li><li><b>Évoluer</b> : carrières.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Talents</b> : pipeline.</li><li><b>Impact</b> : société.</li><li><b>Héritage</b> : durable.</li><li><b>Notoriété</b> : légende.</li><li><b>Société</b> : résiliente.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Temps</b> : long.</li><li><b>Ressources</b> : investissement.</li><li><b>Suivi</b> : difficile.</li><li><b>Mesure</b> : impact.</li><li><b>Engagement</b> : personnel.</li></ul>"}
+],
+why:"La 5e génération = avenir lointain de la cyber.",
+bank:"Une banque peut financer des académies pour jeunes.",
+glo:"<b>5e génération</b> : 2200+.",
+pr:["Inspirer","Former","Mentorer","Valoriser"],
+er:"Motiver sans former = illusion.",
+df:"Concevoir un plan pour la 5e génération.",
+proj:"Publier le plan sur GitHub.",
+q:[{q:"5e génération :",a:["2200+","Rien","Rien","Rien"],c:0,e:"5e génération = 2200+."},{q:"Défis :",a:["Conscience IA","Rien","Rien","Rien"],c:0,e:"Défis : conscience IA."}]},
+
+{id:696,t:"Paix cyber civilisationnelle durable",d:50,
+intro:"La paix cyber durable = absence de cyber-guerre, protection des civils, coopération entre états, sur le long terme. C'est l'objectif ultime de la communauté cyber.",
+analogy:"Une paix durable pour la cyber. Elle protège les personnes, les entreprises, les sociétés, les civilisations.",
+sections:[
+{titre:"Enjeux",contenu:"<ul><li><b>Cyber-guerre</b> : éviter.</li><li><b>Civils</b> : protéger.</li><li><b>Infrastructures</b> : critiques.</li><li><b>Attribution</b> : états.</li><li><b>Sanctions</b> : ciblées.</li><li><b>Coopération</b> : internationale.</li></ul>"},
+{titre:"Initiatives",contenu:"<ul><li><b>ONU</b> : GGE, OEWG.</li><li><b>Paris Call</b> : principes.</li><li><b>Cyber Peace Institute</b> : ONG.</li><li><b>Forum de Paris</b> : paix.</li><li><b>Tech Accord</b> : industrie.</li><li><b>Christchurch Call</b>.</li></ul>"},
+{titre:"Actions",contenu:"<ul><li><b>Normes</b> : comportement.</li><li><b>Attribution</b> : publique.</li><li><b>Sanctions</b> : coordonnées.</li><li><b>Coopération</b> : judiciaire.</li><li><b>Protection</b> : civils.</li><li><b>Éducation</b> : société.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Paix</b> : mondiale.</li><li><b>Protection</b> : civils.</li><li><b>Confiance</b> : états.</li><li><b>Coopération</b> : internationale.</li><li><b>Héritage</b> : durable.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Souveraineté</b> : états.</li><li><b>Attribution</b> : difficile.</li><li><b>Application</b> : faible.</li><li><b>Inégalités</b> : pays.</li><li><b>Escalade</b> : risque.</li></ul>"}
+],
+why:"La paix cyber durable = objectif civilisationnel.",
+bank:"Une banque peut soutenir la paix cyber (mécénat).",
+glo:"<b>Cyber Peace</b> : paix cyber.",
+pr:["Enjeux","Initiatives","Actions","Impact"],
+er:"Paix sans coopération = illusion.",
+df:"Concevoir une initiative pour la paix cyber durable.",
+proj:"Publier le projet sur GitHub.",
+q:[{q:"Paris Call :",a:["Principes paix","Rien","Rien","Rien"],c:0,e:"Paris Call = principes paix."},{q:"Cyber Peace Institute :",a:["ONG","Rien","Rien","Rien"],c:0,e:"Cyber Peace Institute = ONG."}]},
+
+{id:697,t:"Réflexion finale absolue",d:50,
+intro:"Après 700 défis, prenez un moment de réflexion finale absolue. Pourquoi la cyber ? Quel impact ? Quel héritage ? Quelle civilisation voulez-vous contribuer à construire ? Quelle est votre place dans l'univers ?",
+analogy:"Un moment de silence après un long voyage. Vous regardez le chemin parcouru, et vous choisissez la suite.",
+sections:[
+{titre:"Questions",contenu:"<ul><li><b>Pourquoi</b> la cyber ?</li><li><b>Quel impact</b> ?</li><li><b>Quel héritage</b> ?</li><li><b>Quelle civilisation</b> ?</li><li><b>Quelle place</b> ?</li><li><b>Quelle postérité</b> ?</li></ul>"},
+{titre:"Méthode",contenu:"<ol><li><b>Silence</b> : réflexion.</li><li><b>Écriture</b> : journal.</li><li><b>Dialogue</b> : mentor.</li><li><b>Vision</b> : 50 ans.</li><li><b>Action</b> : étapes.</li></ol>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Clarté</b> : vision.</li><li><b>Motivation</b> : renforcée.</li><li><b>Décisions</b> : alignées.</li><li><b>Impact</b> : durable.</li><li><b>Paix</b> : intérieure.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Doute</b> : normal.</li><li><b>Incertitude</b> : futur.</li><li><b>Pression</b> : sociale.</li><li><b>Distraction</b> : quotidien.</li><li><b>Action</b> : cohérence.</li></ul>"}
+],
+why:"La réflexion finale = sens et motivation.",
+bank:"Un expert aligné = meilleur pour l'entreprise.",
+glo:"<b>Réflexion</b> : introspection.",
+pr:["Silence","Écriture","Vision","Action"],
+er:"Réflexion sans action = utopie.",
+df:"Rédiger une réflexion personnelle post-700 défis.",
+proj:"Publier la réflexion sur GitHub.",
+q:[{q:"Questions :",a:["Pourquoi, impact","Rien","Rien","Rien"],c:0,e:"Questions : pourquoi, impact."},{q:"Méthode :",a:["Silence, écriture","Rien","Rien","Rien"],c:0,e:"Méthode : silence, écriture."}]},
+
+{id:698,t:"Derniers conseils aux architectes de civilisation",d:50,
+intro:"Ce défi donne les derniers conseils aux architectes de civilisation. Après 700 défis, vous êtes prêt à bâtir. Voici les clés du succès.",
+analogy:"Un sage qui donne ses derniers conseils à ses disciples.",
+sections:[
+{titre:"Les 10 conseils",contenu:"<ol><li><b>Continuez</b> à apprendre.</li><li><b>Pratiquez</b> régulièrement.</li><li><b>Documentez</b> votre travail.</li><li><b>Partagez</b> votre expertise.</li><li><b>Réseau</b> : construisez-le.</li><li><b>Éthique</b> : irréprochable.</li><li><b>Curiosité</b> : permanente.</li><li><b>Persévérance</b> : échecs.</li><li><b>Humilité</b> : toujours.</li><li><b>Impact</b> : positif.</li></ol>"},
+{titre:"Erreurs à éviter",contenu:"<ul><li><b>Arrêter d'apprendre</b>.</li><li><b>Négliger les bases</b>.</li><li><b>Pas de portfolio</b>.</li><li><b>Pas de réseau</b>.</li><li><b>Éthique faible</b>.</li><li><b>Arrogance</b>.</li><li><b>Burnout</b>.</li><li><b>Pas d'impact</b>.</li></ul>"},
+{titre:"Dernières réflexions",contenu:"<p>La cyber est une carrière exigeante mais gratifiante. Vous protégez des personnes, des entreprises, des sociétés, des civilisations. Votre travail compte. Restez curieux, éthique, et engagé.</p>"},
+{titre:"Votre futur",contenu:"<ul><li><b>Expert</b> : pentester, RSSI.</li><li><b>Entrepreneur</b> : startup.</li><li><b>Chercheur</b> : PhD.</li><li><b>Leader</b> : CISO légende.</li><li><b>Mythe</b> : fondateur.</li><li><b>Architecte</b> : civilisation.</li><li><b>Héritage</b> : millénaire.</li><li><b>Postérité</b> : civilisationnelle.</li></ul>"}
+],
+why:"Les conseils finaux = clés du succès.",
+bank:"Un expert architecte inspire et guide.",
+glo:"<b>Humilité</b> : toujours.",
+pr:["Relire les 10 conseils","Plan","Action","Impact"],
+er:"Arrêter d'apprendre = mort.",
+df:"Rédiger un plan personnel basé sur les 10 conseils.",
+proj:"Publier un 'Architect Guide' sur GitHub.",
+q:[{q:"10 conseils :",a:["Clés succès","Rien","Rien","Rien"],c:0,e:"10 conseils = clés du succès."},{q:"Humilité :",a:["Toujours","Rien","Rien","Rien"],c:0,e:"Humilité = toujours."}]},
+
+{id:699,t:"Vision 2100 personnelle",d:50,
+intro:"Après 700 défis, définissez votre vision 2100 personnelle. Où serez-vous (ou votre héritage) en 2100 ? Quelle civilisation ? Quel impact ? Quel héritage ?",
+analogy:"Un phare pour les 75 prochaines années.",
+sections:[
+{titre:"Vision 2100",contenu:"<ul><li><b>Rôle</b> : légende, architecte.</li><li><b>Expertise</b> : pointe mondiale.</li><li><b>Impact</b> : civilisationnel.</li><li><b>Héritage</b> : millénaire.</li><li><b>Vie</b> : équilibre.</li></ul>"},
+{titre:"Roadmap",contenu:"<ol><li><b>2100</b> : où ?</li><li><b>2075</b> : étapes.</li><li><b>2050</b> : prochaines étapes.</li><li><b>2025</b> : actions immédiates.</li></ol>"},
+{titre:"Mesures",contenu:"<ul><li><b>Expertise</b> : certifications.</li><li><b>Impact</b> : communauté.</li><li><b>Héritage</b> : institutions.</li><li><b>Revenus</b> : objectif.</li><li><b>Équilibre</b> : vie.</li></ul>"},
+{titre:"Bénéfices",contenu:"<ul><li><b>Cap</b> : clair.</li><li><b>Motivation</b> : quotidienne.</li><li><b>Décisions</b> : alignées.</li><li><b>Impact</b> : durable.</li><li><b>Équilibre</b> : vie.</li></ul>"},
+{titre:"Défis",contenu:"<ul><li><b>Incertitude</b> : futur.</li><li><b>Changements</b> : vie.</li><li><b>Réalisme</b> : ambition.</li><li><b>Action</b> : quotidien.</li><li><b>Persévérance</b> : échecs.</li></ul>"}
+],
+why:"Une vision personnelle = cap pour 75 ans.",
+bank:"Un expert architecte a une vision claire.",
+glo:"<b>Vision 2100</b> : cap 75 ans.",
+pr:["Introspection","Vision","Roadmap","Actions"],
+er:"Vision sans action = utopie.",
+df:"Rédiger sa vision 2100 personnelle.",
+proj:"Publier une vision sur GitHub.",
+q:[{q:"Vision 2100 :",a:["Cap 75 ans","Rien","Rien","Rien"],c:0,e:"Vision 2100 = cap 75 ans."},{q:"Roadmap :",a:["Étapes","Rien","Rien","Rien"],c:0,e:"Roadmap = étapes."}]},
+
+{id:700,t:"Célébration : 700 défis accomplis",d:60,
+intro:"Félicitations ! Vous avez accompli 700 défis. C'est un parcours exceptionnel qui vous a transformé. Vous êtes désormais un architecte de civilisation cyber, capable de fonder, diriger, innover, transmettre, et bâtir pour les siècles.",
+analogy:"Un sommet atteint. La vue est magnifique. Le voyage continue.",
+sections:[
+{titre:"Bilan 700 défis",contenu:"<ul><li><b>700 défis</b> complétés.</li><li><b>7 niveaux</b> maîtrisés.</li><li><b>35 modules</b> parcourus.</li><li><b>35 examens</b> réussis.</li><li><b>Portfolio</b> riche.</li><li><b>Expertise</b> complète.</li></ul>"},
+{titre:"Compétences acquises",contenu:"<ul><li><b>Technique</b> : pentest, SOC, cloud.</li><li><b>Architecture</b> : SABSA, Zero Trust.</li><li><b>GRC</b> : ISO, PCI, BCEAO.</li><li><b>Management</b> : équipe, budget.</li><li><b>Stratégie</b> : vision, board.</li><li><b>Entrepreneuriat</b> : startup.</li><li><b>Recherche</b> : publications.</li><li><b>Institutions</b> : écoles, ONG.</li><li><b>Héritage</b> : durable.</li><li><b>Civilisation</b> : architecte.</li></ul>"},
+{titre:"Félicitations",contenu:"<p><b>Vous avez accompli 700 défis !</b> C'est un parcours exceptionnel qui vous a transformé. Vous êtes désormais un architecte de civilisation cyber, capable de fonder, diriger, innover, transmettre, et bâtir pour les siècles.</p><p>Le voyage ne fait que commencer. Continuez à apprendre, contribuer, fonder, et transmettre. Vous êtes la prochaine génération d'architectes de civilisation.</p>"},
+{titre:"Et maintenant",contenu:"<ul><li><b>Portfolio</b> : publiez-le.</li><li><b>Certifications</b> : passez-les.</li><li><b>Emploi</b> : trouvez-en.</li><li><b>Entrepreneuriat</b> : lancez.</li><li><b>Institutions</b> : fondez.</li><li><b>Standards</b> : créez.</li><li><b>Héritage</b> : laissez.</li><li><b>Vision</b> : 2100.</li></ul>"}
+],
+why:"La célébration = reconnaissance et motivation.",
+bank:"Un expert 700 défis = architecte pour les banques.",
+glo:"<b>Célébration</b> : réussite.",
+pr:["Célébrer","Bilan","Prochaines étapes","Impact"],
+er:"Ne pas célébrer = perte motivation.",
+df:"Rédiger un bilan 700 défis et prochaines étapes.",
+proj:"Publier un '700 Defis Journey' sur GitHub.",
+q:[{q:"700 défis :",a:["Accomplis","Rien","Rien","Rien"],c:0,e:"700 défis accomplis !"},{q:"Prochaine étape :",a:["Portfolio","Rien","Rien","Rien"],c:0,e:"Publier son portfolio."}]}
+];
+
+/* ============================================================
+   EXAMENS NIVEAU 7 (E31-E35)
+   ============================================================ */
+var EXAMS = [
+{id:"E31", module:"Module 31 - Standards planétaires", from:601, to:620, niveau:7, titre:"Examen Module 31 : Standards planétaires", duree:30, questions:[
+{q:"ISO 27001 :",a:["Standard SMSI","Rien","Rien","Rien"],c:0,e:"ISO 27001 = standard SMSI."},
+{q:"MITRE ATT&CK :",a:["Référence TTPs","Rien","Rien","Rien"],c:0,e:"MITRE ATT&CK = référence TTPs."},
+{q:"ICANN :",a:["Noms de domaine","Rien","Rien","Rien"],c:0,e:"ICANN = gestion noms domaine."},
+{q:"Multi-stakeholder :",a:["Tous acteurs","Rien","Rien","Rien"],c:0,e:"Multi-stakeholder = tous les acteurs."},
+{q:"Budapest :",a:["Cybercrime","Rien","Rien","Rien"],c:0,e:"Convention de Budapest = cybercrime."},
+{q:"CISSP :",a:["Certification mondiale","Rien","Rien","Rien"],c:0,e:"CISSP = certification mondiale."},
+{q:"SCION :",a:["Protocole sécurisé","Rien","Rien","Rien"],c:0,e:"SCION = protocole routage sécurisé."},
+{q:"AI Act :",a:["Régulation EU","Rien","Rien","Rien"],c:0,e:"AI Act = régulation IA EU."},
+{q:"ViaSat :",a:["Hack satellites","Rien","Rien","Rien"],c:0,e:"ViaSat = hack satellites."},
+{q:"Gaia-X :",a:["Cloud EU","Rien","Rien","Rien"],c:0,e:"Gaia-X = cloud EU."}
+]},
+{id:"E32", module:"Module 32 - Géopolitique cyber", from:621, to:640, niveau:7, titre:"Examen Module 32 : Géopolitique cyber avancée", duree:30, questions:[
+{q:"Tallinn Manual :",a:["Doctrine OTAN","Rien","Rien","Rien"],c:0,e:"Tallinn Manual = doctrine OTAN."},
+{q:"SolarWinds :",a:["Russie","Rien","Rien","Rien"],c:0,e:"SolarWinds = Russie."},
+{q:"WannaCry :",a:["Corée du Nord","Rien","Rien","Rien"],c:0,e:"WannaCry = Corée du Nord."},
+{q:"Sanctions :",a:["Mesures punitives","Rien","Rien","Rien"],c:0,e:"Sanctions = mesures punitives."},
+{q:"Article 5 :",a:["Défense collective","Rien","Rien","Rien"],c:0,e:"Article 5 = défense collective."},
+{q:"Locked Shields :",a:["Exercice cyber","Rien","Rien","Rien"],c:0,e:"Locked Shields = exercice OTAN."},
+{q:"Dissuasion :",a:["Empêcher attaque","Rien","Rien","Rien"],c:0,e:"Dissuasion = empêcher attaque."},
+{q:"Five Eyes :",a:["Alliance renseignement","Rien","Rien","Rien"],c:0,e:"Five Eyes = alliance renseignement."},
+{q:"Neutralité :",a:["Trafic égal","Rien","Rien","Rien"],c:0,e:"Neutralité = trafic égal."},
+{q:"Cloud Act :",a:["Loi US","Rien","Rien","Rien"],c:0,e:"Cloud Act = loi US."}
+]},
+{id:"E33", module:"Module 33 - Civilisation numérique", from:641, to:660, niveau:7, titre:"Examen Module 33 : Civilisation numérique & éthique", duree:30, questions:[
+{q:"Convention 108 :",a:["Données","Rien","Rien","Rien"],c:0,e:"Convention 108 = protection données."},
+{q:"Surveillance :",a:["Observation","Rien","Rien","Rien"],c:0,e:"Surveillance = observation."},
+{q:"Vote électronique :",a:["Vote numérique","Rien","Rien","Rien"],c:0,e:"Vote électronique = vote numérique."},
+{q:"DSA :",a:["Digital Services Act","Rien","Rien","Rien"],c:0,e:"DSA = Digital Services Act."},
+{q:"Pix :",a:["Certification FR","Rien","Rien","Rien"],c:0,e:"Pix = certification FR."},
+{q:"Deepfake :",a:["Faux contenu IA","Rien","Rien","Rien"],c:0,e:"Deepfake = faux contenu IA."},
+{q:"Fracture :",a:["Inégalité numérique","Rien","Rien","Rien"],c:0,e:"Fracture = inégalité numérique."},
+{q:"Open Source :",a:["Code ouvert","Rien","Rien","Rien"],c:0,e:"Open Source = code ouvert."},
+{q:"AGI :",a:["IA générale","Rien","Rien","Rien"],c:0,e:"AGI = Artificial General Intelligence."},
+{q:"Anthropic :",a:["AI Safety","Rien","Rien","Rien"],c:0,e:"Anthropic = entreprise AI safety."}
+]},
+{id:"E34", module:"Module 34 - IA superintelligente", from:661, to:680, niveau:7, titre:"Examen Module 34 : IA superintelligente & sécurité", duree:30, questions:[
+{q:"AGI :",a:["IA générale","Rien","Rien","Rien"],c:0,e:"AGI = Artificial General Intelligence."},
+{q:"RLHF :",a:["Human Feedback","Rien","Rien","Rien"],c:0,e:"RLHF = Reinforcement Learning from Human Feedback."},
+{q:"Constitutional AI :",a:["Anthropic","Rien","Rien","Rien"],c:0,e:"Constitutional AI = Anthropic."},
+{q:"SHAP :",a:["Attributions","Rien","Rien","Rien"],c:0,e:"SHAP = attributions."},
+{q:"LIME :",a:["Local","Rien","Rien","Rien"],c:0,e:"LIME = local."},
+{q:"CISA :",a:["Autorité US","Rien","Rien","Rien"],c:0,e:"CISA = autorité cyber US."},
+{q:"LAWS :",a:["Armes létales","Rien","Rien","Rien"],c:0,e:"LAWS = Lethal Autonomous Weapons."},
+{q:"Conscience :",a:["Émergence","Rien","Rien","Rien"],c:0,e:"Conscience = émergence."},
+{q:"AI Security :",a:["Nouveau rôle","Rien","Rien","Rien"],c:0,e:"AI Security = nouveau rôle."},
+{q:"Cyber Command :",a:["Armée cyber US","Rien","Rien","Rien"],c:0,e:"Cyber Command = armée cyber US."}
+]},
+{id:"E35", module:"Module 35 - Postérité civilisationnelle", from:681, to:700, niveau:7, titre:"Examen Module 35 : Postérité civilisationnelle", duree:30, questions:[
+{q:"Civilisationnel :",a:["Humanité","Rien","Rien","Rien"],c:0,e:"Civilisationnel = humanité."},
+{q:"Oxford :",a:["Université 1096","Rien","Rien","Rien"],c:0,e:"Oxford = université 1096."},
+{q:"Millénaire :",a:["1000 ans","Rien","Rien","Rien"],c:0,e:"Millénaire = 1000 ans."},
+{q:"4e génération :",a:["2100+","Rien","Rien","Rien"],c:0,e:"4e génération = 2100+."},
+{q:"Paris Call :",a:["Principes paix","Rien","Rien","Rien"],c:0,e:"Paris Call = principes paix."},
+{q:"Cyber Peace Institute :",a:["ONG","Rien","Rien","Rien"],c:0,e:"Cyber Peace Institute = ONG."},
+{q:"700 défis :",a:["Accomplis","Rien","Rien","Rien"],c:0,e:"700 défis accomplis !"},
+{q:"Vision 2100 :",a:["Cap 75 ans","Rien","Rien","Rien"],c:0,e:"Vision 2100 = cap 75 ans."},
+{q:"Architect :",a:["Architecte","Rien","Rien","Rien"],c:0,e:"Architect = architecte."},
+{q:"Célébration :",a:["Réussite","Rien","Rien","Rien"],c:0,e:"Célébration = réussite."}
+]}
+];
+
+var EXAM_PASS_RATIO = 0.7;
+
+var CERT_PLAN = [
+{seuil:620, modules:"Defis 601-620", titre:"Standard mondial", cert:"ISO/IEC 27001 Lead Implementer", url:"https://www.iso.org/", type:"paid", desc:"Implémentation standard. ~4000€."},
+{seuil:640, modules:"Defis 621-640", titre:"Géopolitique cyber", cert:"Harvard Kennedy School - Cyber", url:"https://www.hks.harvard.edu/", type:"paid", desc:"Programme Harvard cyber. ~20k€."},
+{seuil:660, modules:"Defis 641-660", titre:"Civilisation numérique", cert:"Oxford Internet Institute", url:"https://www.oii.ox.ac.uk/", type:"paid", desc:"Programme Oxford. ~15k€."},
+{seuil:680, modules:"Defis 661-680", titre:"IA superintelligente", cert:"AI Safety Fellowship", url:"https://aisafety.info/", type:"paid", desc:"Programme AI Safety. ~10k€."},
+{seuil:700, modules:"Defis 681-700", titre:"Niveau 7 Architecte", cert:"Advanced Civilization Leadership", url:"https://www.weforum.org/", type:"paid", desc:"Programme WEF. ~50k€."}
+];
+
+var MILESTONES = [
+{seuil:620, titre:"Standard mondial cyber", date:"Apres defi 620", desc:"Standard complet + gouvernance + adoption."},
+{seuil:640, titre:"Stratégie géopolitique", date:"Apres defi 640", desc:"Doctrine + alliances + attribution."},
+{seuil:660, titre:"Civilisation numérique", date:"Apres defi 660", desc:"Droits + éducation + IA éthique."},
+{seuil:680, titre:"Stratégie IA civilisée", date:"Apres defi 680", desc:"Alignement + interprétabilité + contrôle."},
+{seuil:700, titre:"Niveau 7 Architecte - 700 défis", date:"Apres defi 700", desc:"Parcours architecte complet 700 défis."}
+];
+
+var JOBS = [
+{nom:"Architecte de civilisation cyber", url:"https://www.linkedin.com/jobs/", type:"International", desc:"Influence mondiale."},
+{nom:"Directeur standard mondial", url:"https://www.iso.org/", type:"Standard", desc:"ISO, NIST, IETF."},
+{nom:"Conseiller ONU cyber", url:"https://www.un.org/", type:"International", desc:"Gouvernance mondiale."},
+{nom:"Conseiller OTAN cyber", url:"https://www.nato.int/", type:"International", desc:"Défense collective."},
+{nom:"Directeur think tank international", url:"https://www.linkedin.com/jobs/", type:"Think tank", desc:"Influence mondiale."},
+{nom:"Chercheur AI safety", url:"https://www.anthropic.com/", type:"Recherche", desc:"Alignement IA."},
+{nom:"Directeur AI policy", url:"https://www.linkedin.com/jobs/", type:"Policy", desc:"Régulation IA."},
+{nom:"Conférencier international", url:"https://www.linkedin.com/jobs/", type:"Speaker", desc:"Conférences mondiales."}
+];
+
+var state = JSON.parse(localStorage.getItem('cyber_ci_lvl7') || '{"done":{},"exams":{}}');
+if (!state.exams) state.exams = {};
+Object.keys(state.done).forEach(function(id){ if (state.done[id] === true) state.done[id] = new Date().toISOString(); });
+function save(){ localStorage.setItem('cyber_ci_lvl7', JSON.stringify(state)); }
+var app = document.getElementById('app');
+
+function todayKey(){ return new Date().toISOString().split('T')[0]; }
+function countToday(){ var t = todayKey(); return Object.values(state.done).filter(function(v){ return typeof v === 'string' && v.startsWith(t); }).length; }
+function countTotal(){ return Object.keys(state.done).length; }
+function passedExamsCount(){ return Object.keys(state.exams).filter(function(k){ return state.exams[k].passed; }).length; }
+
+function isExamUnlocked(ex){ for (var i = ex.from; i <= ex.to; i++){ if (!state.done[i]) return false; } return true; }
+function isExamPassed(ex){ return !!(state.exams && state.exams[ex.id] && state.exams[ex.id].passed); }
+
+function updateProg(){
+  var done = countTotal(), today = countToday();
+  document.getElementById('hs').innerHTML = "Aujourdhui : <b>" + today + "</b> · Defis : <b>" + done + "/" + D.length + "</b> · Examens : <b>" + passedExamsCount() + "/" + EXAMS.length + "</b>";
+}
+
+function render(){
+  updateProg();
+  var today = countToday(), total = countTotal();
+  
+  var html = '<div class="hero"><h2>Niveau 7 : Architecte de Civilisation <span class="level-tag l7">NIVEAU 7</span></h2><p>100 défis ultimes : Standards planétaires, Géopolitique cyber, Civilisation numérique, IA superintelligente, Postérité civilisationnelle. Objectif : Architecte de civilisation, Conseiller ONU, Chercheur AI safety, Légende mondiale.</p></div>';
+  
+  html += '<div class="card"><div class="stats-grid"><div class="stat"><span class="big">' + today + '</span><span class="lbl">Aujourdhui</span></div><div class="stat"><span class="big">' + total + '/100</span><span class="lbl">Defis</span></div><div class="stat"><span class="big">' + passedExamsCount() + '/5</span><span class="lbl">Examens</span></div><div class="stat"><span class="big">' + Math.round(total/D.length*100) + '%</span><span class="lbl">Progression</span></div></div>';
+  html += '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="gold" onclick="showCerts()">Certifications</button><button class="gold" onclick="showStats()">Statistiques</button><button class="gold" onclick="showJobs()">Emplois</button><button class="sec" onclick="reset()">Reinitialiser</button></div></div>';
+  
+  var mods = [
+    {n:"Module 31 - Standards planétaires", from:601, to:620, cs:620, exam:"E31"},
+    {n:"Module 32 - Géopolitique cyber avancée", from:621, to:640, cs:640, exam:"E32"},
+    {n:"Module 33 - Civilisation numérique & éthique", from:641, to:660, cs:660, exam:"E33"},
+    {n:"Module 34 - IA superintelligente & sécurité", from:661, to:680, cs:680, exam:"E34"},
+    {n:"Module 35 - Postérité civilisationnelle", from:681, to:700, cs:700, exam:"E35"}
+  ];
+  
+  mods.forEach(function(m){
+    var defis = D.filter(function(d){ return d.id >= m.from && d.id <= m.to; });
+    var done = defis.filter(function(d){ return state.done[d.id]; }).length;
+    var cp = CERT_PLAN.filter(function(c){ return c.seuil === m.cs; })[0];
+    var exam = EXAMS.filter(function(e){ return e.id === m.exam; })[0];
+    var examUnlocked = exam && isExamUnlocked(exam);
+    var examPassed = exam && isExamPassed(exam);
+    var status = done === defis.length ? 'done' : '';
+    
+    html += '<div class="card" style="border-left:4px solid #8b5cf6"><h2 style="color:#c4b5fd">' + m.n + '</h2><p style="color:#94a3b8;font-size:0.8em">' + done + '/' + defis.length + ' defis valides</p>';
+    if (cp) {
+      var badge = cp.type === 'free' ? 'free' : (cp.type === 'partial' ? 'partial' : 'paid');
+      var badgeTxt = cp.type === 'free' ? 'GRATUIT' : (cp.type === 'partial' ? 'PARTIEL' : 'PAYANT');
+      html += '<div class="cert ' + status + '"><h4>' + (status?'Debloquee':'A debloquer') + ' - ' + cp.modules + '</h4><div style="font-weight:700;margin:4px 0">' + cp.cert + ' <span class="badge ' + badge + '">' + badgeTxt + '</span></div><div style="font-size:0.85em;color:#94a3b8;margin-top:6px">' + cp.desc + '</div><div style="margin-top:6px"><a href="' + cp.url + '" target="_blank">Site officiel</a></div></div>';
+    }
+    html += '<div class="grid">';
+    defis.forEach(function(d){
+      var cls = state.done[d.id] ? 'done' : '';
+      html += '<div class="btn ' + cls + '" onclick="show(' + d.id + ')"><span class="n">Defi ' + d.id + '</span><span class="ti">' + d.t + '</span></div>';
+    });
+    html += '</div>';
+    
+    if (exam) {
+      var cls2 = examPassed ? 'passed' : (examUnlocked ? '' : 'locked');
+      var badgeCls = examPassed ? 'passed' : (examUnlocked ? 'ready' : 'locked');
+      var badgeTxt2 = examPassed ? 'REUSSI' : (examUnlocked ? 'PRET' : 'VERROUILLE');
+      html += '<div class="exam-card ' + cls2 + '"><span class="exam-badge ' + badgeCls + '">' + badgeTxt2 + '</span><h4>' + exam.titre + '</h4>';
+      html += '<div class="qcount">' + exam.questions.length + ' questions · Seuil : ' + Math.round(EXAM_PASS_RATIO*100) + '% · ' + exam.duree + ' min</div>';
+      if (examPassed) {
+        var sc = state.exams[exam.id].score;
+        html += '<div style="color:#86efac;font-size:0.85em;margin-top:6px">Score : ' + sc + '/' + exam.questions.length + ' (' + Math.round(sc/exam.questions.length*100) + '%)</div>';
+        html += '<div class="nav"><button class="exam" onclick="startExam(\'' + exam.id + '\')">Repasser</button></div>';
+      } else if (examUnlocked) {
+        html += '<div style="color:#c4b5fd;font-size:0.85em;margin-top:6px">Module complete ! Passez l\'examen.</div>';
+        html += '<div class="nav"><button class="exam" onclick="startExam(\'' + exam.id + '\')">Passer l\'examen</button></div>';
+      } else {
+        var reste = exam.to - done;
+        html += '<div style="color:#94a3b8;font-size:0.85em;margin-top:6px">Validez les ' + reste + ' defis restants pour debloquer.</div>';
+      }
+      html += '</div>';
+    }
+    
+    html += '</div>';
+  });
+  
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function show(id){
+  var d = D.filter(function(x){ return x.id === id; })[0];
+  if (!d) return;
+  var dateValid = state.done[d.id];
+  var dateStr = dateValid ? new Date(dateValid).toLocaleString('fr-FR') : '';
+  
+  var html = '<div class="card"><div class="meta"><small>Defi ' + d.id + '/700</small><small>' + d.d + ' min</small>' + (dateStr ? '<small style="color:#22c55e">Valide le ' + dateStr + '</small>' : '') + '<small class="level-tag l7">NIVEAU 7</small></div>';
+  html += '<h2>Defi ' + d.id + ' : ' + d.t + '</h2>';
+  html += '<div class="intro"><h3 style="color:#c4b5fd;margin-top:0">Introduction</h3><p>' + d.intro + '</p></div>';
+  html += '<div class="analogy"><b>Analogie :</b> ' + d.analogy + '</div>';
+  
+  d.sections.forEach(function(s, i){
+    html += '<div class="section"><h3>' + (i+1) + '. ' + s.titre + '</h3>' + s.contenu + '</div>';
+  });
+  
+  html += '<div class="why"><b>Pourquoi en cyber :</b> ' + d.why + '</div>';
+  html += '<div class="bank"><b>Pourquoi pour une banque :</b> ' + d.bank + '</div>';
+  html += '<div class="glo"><b>Glossaire :</b> ' + d.glo + '</div>';
+  html += '<div class="pr"><h3 style="color:#22c55e;margin-top:0">PRATIQUE</h3><ol>';
+  d.pr.forEach(function(p){ html += '<li>' + p + '</li>'; });
+  html += '</ol></div>';
+  html += '<div class="er"><b>Erreur a eviter :</b> ' + d.er + '</div>';
+  html += '<div class="df"><b>Exercice final :</b> ' + d.df + '</div>';
+  html += '<div class="car"><b>Livrable portfolio :</b> ' + d.proj + '</div>';
+  html += '<h3>Quiz</h3><div class="quiz" id="quiz">';
+  
+  d.q.forEach(function(q, i){
+    html += '<div class="q"><b>Q' + (i+1) + '. ' + q.q + '</b>';
+    q.a.forEach(function(opt, j){
+      html += '<label><input type="radio" name="q' + i + '" value="' + j + '"> ' + opt + '</label>';
+    });
+    html += '<div class="exp" id="exp' + i + '"></div></div>';
+  });
+  
+  html += '</div><div class="nav"><button class="sec" onclick="render()">Accueil</button><button onclick="validate(' + id + ')">Valider</button></div><div id="res"></div></div>';
+  
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function validate(id){
+  var d = D.filter(function(x){ return x.id === id; })[0];
+  var correct = 0;
+  d.q.forEach(function(q, i){
+    var sel = document.querySelector('input[name="q' + i + '"]:checked');
+    var labels = document.querySelectorAll('input[name="q' + i + '"]');
+    labels.forEach(function(inp, j){
+      var lbl = inp.parentElement;
+      if (j === q.c) lbl.classList.add('ok');
+      if (sel && +sel.value === j && j !== q.c) lbl.classList.add('ko');
+    });
+    var exp = document.getElementById('exp' + i);
+    exp.style.display = 'block';
+    exp.innerHTML = q.e;
+    if (sel && +sel.value === q.c) correct++;
+  });
+  
+  var ok = correct === d.q.length;
+  var dejaValide = !!state.done[id];
+  document.getElementById('res').innerHTML = '<div class="res ' + (ok?'g':'r') + '">' + (ok ? 'Defi ' + d.id + ' valide !' : 'Score : ' + correct + '/' + d.q.length + ' - Reessayez') + '</div>';
+  
+  if (ok && !dejaValide) {
+    state.done[id] = new Date().toISOString();
+    save();
+    updateProg();
+    var exam = EXAMS.filter(function(e){ return e.from <= id && e.to >= id; })[0];
+    if (exam && isExamUnlocked(exam) && !isExamPassed(exam)) {
+      document.getElementById('res').innerHTML += '<div class="res g" style="margin-top:8px">Module complete ! <a href="#" onclick="startExam(\'' + exam.id + '\');return false;">Passer l\'examen final</a></div>';
+    }
+  }
+}
+
+var currentExam = null;
+
+function startExam(id){
+  var ex = EXAMS.filter(function(e){ return e.id === id; })[0];
+  if (!ex) return;
+  if (!isExamUnlocked(ex)) { alert("Validez d'abord tous les defis du module."); return; }
+  currentExam = ex;
+  
+  var html = '<div class="card"><div class="meta"><small>Examen ' + ex.id + '</small><small>' + ex.questions.length + ' questions</small><small>Seuil ' + Math.round(EXAM_PASS_RATIO*100) + '%</small><small class="level-tag l7">NIVEAU 7</small></div>';
+  html += '<h2>' + ex.titre + '</h2>';
+  html += '<div class="intro"><p><b>Instructions :</b> Repondez a toutes les questions. Il faut au moins ' + Math.ceil(ex.questions.length * EXAM_PASS_RATIO) + '/' + ex.questions.length + ' bonnes reponses.</p></div>';
+  html += '<div class="quiz" id="examQuiz">';
+  
+  ex.questions.forEach(function(q, i){
+    html += '<div class="q" data-qi="' + i + '"><b>Q' + (i+1) + '. ' + q.q + '</b>';
+    q.a.forEach(function(opt, j){
+      html += '<label><input type="radio" name="exam_q' + i + '" value="' + j + '"> ' + opt + '</label>';
+    });
+    html += '<div class="exp" id="exam_exp' + i + '"></div></div>';
+  });
+  
+  html += '</div><div class="nav"><button class="sec" onclick="render()">Annuler</button><button class="exam" onclick="submitExam()">Valider l\'examen</button></div><div id="exam_res"></div></div>';
+  
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function submitExam(){
+  if (!currentExam) return;
+  var ex = currentExam;
+  var correct = 0;
+  var details = [];
+  
+  ex.questions.forEach(function(q, i){
+    var sel = document.querySelector('input[name="exam_q' + i + '"]:checked');
+    var labels = document.querySelectorAll('input[name="exam_q' + i + '"]');
+    labels.forEach(function(inp, j){
+      var lbl = inp.parentElement;
+      if (j === q.c) lbl.classList.add('ok');
+      if (sel && +sel.value === j && j !== q.c) lbl.classList.add('ko');
+    });
+    var exp = document.getElementById('exam_exp' + i);
+    exp.style.display = 'block';
+    exp.innerHTML = q.e;
+    var ok = sel && +sel.value === q.c;
+    if (ok) correct++;
+    details.push({q: q.q, ok: ok, correct: q.a[q.c], chosen: sel ? q.a[+sel.value] : '(aucune)'});
+  });
+  
+  var ratio = correct / ex.questions.length;
+  var passed = ratio >= EXAM_PASS_RATIO;
+  var existing = state.exams[ex.id];
+  if (!existing || !existing.passed || correct > existing.score) {
+    state.exams[ex.id] = {score: correct, total: ex.questions.length, passed: passed, date: new Date().toISOString()};
+    save();
+  }
+  
+  var msg = '';
+  if (passed) {
+    msg = '<div class="res g">Examen REUSSI ! ' + correct + '/' + ex.questions.length + ' (' + Math.round(ratio*100) + '%)</div>';
+    if (!existing || !existing.passed) {
+      msg += '<div class="res g" style="margin-top:8px">Felicitations, module valide !</div>';
+    }
+  } else {
+    msg = '<div class="res r">Examen echoue : ' + correct + '/' + ex.questions.length + ' (' + Math.round(ratio*100) + '%)</div>';
+  }
+  
+  msg += '<div class="card" style="margin-top:12px"><h3>Detail des reponses</h3><table><tr><th>#</th><th>Question</th><th>Votre reponse</th><th>Bonne reponse</th><th>Statut</th></tr>';
+  details.forEach(function(d, i){
+    msg += '<tr><td>' + (i+1) + '</td><td>' + d.q + '</td><td>' + d.chosen + '</td><td>' + d.correct + '</td><td style="color:' + (d.ok?'#22c55e':'#ef4444') + '">' + (d.ok?'OK':'KO') + '</td></tr>';
+  });
+  msg += '</table></div>';
+  
+  msg += '<div class="nav"><button class="sec" onclick="render()">Accueil</button><button class="exam" onclick="startExam(\'' + ex.id + '\')">Repasser</button></div>';
+  
+  document.getElementById('exam_res').innerHTML = msg;
+  updateProg();
+  window.scrollTo(0, document.body.scrollHeight - 400);
+}
+
+function showCerts(){
+  var total = countTotal();
+  var html = '<div class="card"><button class="sec" onclick="render()">Accueil</button><h2>Certifications Niveau 7 Architecte</h2>';
+  CERT_PLAN.forEach(function(p){
+    var status = total >= p.seuil ? 'done' : '';
+    var badge = p.type === 'free' ? 'free' : (p.type === 'partial' ? 'partial' : 'paid');
+    var badgeTxt = p.type === 'free' ? 'GRATUIT' : (p.type === 'partial' ? 'PARTIEL' : 'PAYANT');
+    var exam = EXAMS.filter(function(e){ return e.to === p.seuil; })[0];
+    var examPassed = exam && isExamPassed(exam);
+    html += '<div class="cert ' + status + '"><h4>' + p.titre + ' - ' + p.modules + '</h4><div style="font-size:0.85em;color:#fbbf24;font-weight:700;margin:4px 0">' + p.seuil + ' defis minimum</div><div style="font-weight:700;margin:4px 0">' + p.cert + ' <span class="badge ' + badge + '">' + badgeTxt + '</span></div><div style="font-size:0.85em;color:#94a3b8;margin-top:6px">' + p.desc + '</div><div style="margin-top:8px"><a href="' + p.url + '" target="_blank">Site officiel</a></div>' + (status==='done'?'<div style="color:#86efac;font-weight:700;margin-top:8px">Debloquee' + (examPassed ? ' ✓ Examen reussi' : ' (examen a passer)') + '</div>':'<div style="color:#94a3b8;margin-top:8px">Encore ' + (p.seuil-total) + ' defis</div>') + '</div>';
+  });
+  html += '</div>';
+  app.innerHTML = html;
+}
+
+function showStats(){
+  var total = countTotal(), today = countToday();
+  var milestonesDone = MILESTONES.filter(function(m){ return state.done[m.seuil]; });
+  
+  var html = '<div class="card"><button class="sec" onclick="render()">Accueil</button><h2>Statistiques</h2>';
+  html += '<div class="stats-grid"><div class="stat"><span class="big">' + today + '</span><span class="lbl">Aujourdhui</span></div><div class="stat"><span class="big">' + total + '/100</span><span class="lbl">Total</span></div><div class="stat"><span class="big">' + passedExamsCount() + '/5</span><span class="lbl">Examens</span></div></div>';
+  
+  html += '<h3>Examens de module</h3>';
+  html += '<table><tr><th>Examen</th><th>Score</th><th>Statut</th></tr>';
+  EXAMS.forEach(function(ex){
+    var r = state.exams && state.exams[ex.id];
+    var statut = r ? (r.passed ? 'REUSSI' : 'ECHOUE') : 'Non passe';
+    var color = r ? (r.passed ? '#22c55e' : '#ef4444') : '#94a3b8';
+    html += '<tr><td>' + ex.titre + '</td><td>' + (r ? r.score + '/' + r.total : '-') + '</td><td style="color:' + color + ';font-weight:700">' + statut + '</td></tr>';
+  });
+  html += '</table>';
+  
+  html += '<h3>Projets majeurs atteints</h3>';
+  if (milestonesDone.length === 0) {
+    html += '<p style="color:#94a3b8">Aucun projet majeur encore atteint.</p>';
+  } else {
+    html += '<ul>';
+    milestonesDone.forEach(function(m){ html += '<li><b>' + m.titre + '</b> - ' + m.date + '<br><span style="color:#94a3b8;font-size:0.85em">' + m.desc + '</span></li>'; });
+    html += '</ul>';
+  }
+  html += '</div>';
+  app.innerHTML = html;
+}
+
+function showJobs(){
+  var html = '<div class="card"><button class="sec" onclick="render()">Accueil</button><h2>Emplois Architecte</h2>';
+  JOBS.forEach(function(j){
+    html += '<div class="job"><h4>' + j.nom + '</h4><div style="font-size:0.75em;color:#94a3b8">' + j.type + '</div><div style="margin:6px 0;font-size:0.88em">' + j.desc + '</div><a href="' + j.url + '" target="_blank">' + j.url + '</a></div>';
+  });
+  html += '</div>';
+  app.innerHTML = html;
+}
+
+function reset(){
+  if (confirm('Reinitialiser toute la progression du Niveau 7 ?')) {
+    localStorage.removeItem('cyber_ci_lvl7');
+    location.reload();
+  }
+}
+
+render();
+</script>
+</body>
+</html>
